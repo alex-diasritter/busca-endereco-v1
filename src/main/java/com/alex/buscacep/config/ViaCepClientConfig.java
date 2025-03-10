@@ -15,7 +15,7 @@ public class ViaCepClientConfig {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public EnderecoDTO conecaoViaCep(String cep) throws IOException, InterruptedException {
+    public EnderecoDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
         String url = "https://viacep.com.br/ws/" + cep + "/json/";
 
         HttpClient client = HttpClient.newHttpClient();

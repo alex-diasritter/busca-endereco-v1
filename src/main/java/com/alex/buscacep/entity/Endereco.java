@@ -24,9 +24,6 @@ public class Endereco {
     @JsonProperty("logradouro")
     private String logradouro;
 
-    @JsonProperty("complemento")
-    private String complemento;
-
     @JsonProperty("bairro")
     private String bairro;
 
@@ -36,17 +33,8 @@ public class Endereco {
     @JsonProperty("uf")
     private String uf;
 
-    @JsonProperty("ibge")
-    private String ibge;
-
-    @JsonProperty("gia")
-    private String gia;
-
     @JsonProperty("ddd")
     private String ddd;
-
-    @JsonProperty("siafi")
-    private String siafi;
 
     // Construtor padrão necessário para desserialização do Jackson
     public Endereco() {
@@ -57,28 +45,20 @@ public class Endereco {
         this.id = end.getId();
         this.cep = end.getCep();
         this.logradouro = end.getLogradouro();
-        this.complemento = end.getComplemento();
         this.bairro = end.getBairro();
         this.localidade = end.getLocalidade();
         this.uf = end.getUf();
-        this.ibge = end.getIbge();
-        this.gia = end.getGia();
         this.ddd = end.getDdd();
-        this.siafi = end.getSiafi();
     }
 
     public Endereco(Optional<Endereco> end) {
         this.id = end.get().getId();
         this.cep = end.get().getCep();
         this.logradouro = end.get().getLogradouro();
-        this.complemento = end.get().getComplemento();
         this.bairro = end.get().getBairro();
         this.localidade = end.get().getLocalidade();
         this.uf = end.get().getUf();
-        this.ibge = end.get().getIbge();
-        this.gia = end.get().getGia();
         this.ddd = end.get().getDdd();
-        this.siafi = end.get().getSiafi();
     }
 
     @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL)
@@ -100,13 +80,6 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
 
     public String getBairro() {
         return bairro;
@@ -132,21 +105,6 @@ public class Endereco {
         this.uf = uf;
     }
 
-    public String getIbge() {
-        return ibge;
-    }
-
-    public void setIbge(String ibge) {
-        this.ibge = ibge;
-    }
-
-    public String getGia() {
-        return gia;
-    }
-
-    public void setGia(String gia) {
-        this.gia = gia;
-    }
 
     public String getDdd() {
         return ddd;
@@ -154,14 +112,6 @@ public class Endereco {
 
     public void setDdd(String ddd) {
         this.ddd = ddd;
-    }
-
-    public String getSiafi() {
-        return siafi;
-    }
-
-    public void setSiafi(String siafi) {
-        this.siafi = siafi;
     }
 
     public Long getId() {
@@ -178,7 +128,6 @@ public class Endereco {
         return "Endereco{" +
                 "cep='" + cep + '\'' +
                 ", logradouro='" + logradouro + '\'' +
-                ", complemento='" + complemento + '\'' +
                 ", bairro='" + bairro + '\'' +
                 ", localidade='" + localidade + '\'' +
                 ", uf='" + uf + '\'' +

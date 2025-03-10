@@ -28,6 +28,7 @@ public class EnderecoService {
     private EnderecoRepository enderecoRepository;
 
     public EnderecoDTO buscaEndereco (String cep) throws IOException, InterruptedException {
+
         var endereco = enderecoRepository.findByCep(cep);
         if (endereco.isPresent()) { return new EnderecoDTO(endereco); }
 
@@ -42,7 +43,6 @@ public class EnderecoService {
     }
 
     public EnderecoDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
-        var dto = client.conecaoViaCep(cep);
-        return dto;
+        return client.conexaoViaCep(cep);
     }
 }
