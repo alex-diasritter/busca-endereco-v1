@@ -1,9 +1,13 @@
 package com.alex.buscacep.dto;
 
+import com.alex.buscacep.entity.Endereco;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.Optional;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EnderecoDTO {
+    private Long id;
     private String cep;
     private String logradouro;
     private String complemento;
@@ -19,34 +23,61 @@ public class EnderecoDTO {
     public EnderecoDTO() {
     }
 
-    // Getters e Setters
-    public String getCep() { return cep; }
-    public void setCep(String cep) { this.cep = cep; }
+    public EnderecoDTO(Optional<Endereco> end) {
+        this.id = end.get().getId();
+        this.cep = end.get().getCep();
+        this.logradouro = end.get().getLogradouro();
+        this.complemento = end.get().getComplemento();
+        this.bairro = end.get().getBairro();
+        this.localidade = end.get().getLocalidade();
+        this.uf = end.get().getUf();
+        this.ibge = end.get().getIbge();
+        this.gia = end.get().getGia();
+        this.ddd = end.get().getDdd();
+        this.siafi = end.get().getSiafi();
+    }
 
-    public String getLogradouro() { return logradouro; }
-    public void setLogradouro(String logradouro) { this.logradouro = logradouro; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getComplemento() { return complemento; }
-    public void setComplemento(String complemento) { this.complemento = complemento; }
+    public String getCep() {
+        return cep;
+    }
 
-    public String getBairro() { return bairro; }
-    public void setBairro(String bairro) { this.bairro = bairro; }
+    public String getLogradouro() {
+        return logradouro;
+    }
 
-    public String getLocalidade() { return localidade; }
-    public void setLocalidade(String localidade) { this.localidade = localidade; }
+    public String getComplemento() {
+        return complemento;
+    }
 
-    public String getUf() { return uf; }
-    public void setUf(String uf) { this.uf = uf; }
+    public String getBairro() {
+        return bairro;
+    }
 
-    public String getIbge() { return ibge; }
-    public void setIbge(String ibge) { this.ibge = ibge; }
+    public String getLocalidade() {
+        return localidade;
+    }
 
-    public String getGia() { return gia; }
-    public void setGia(String gia) { this.gia = gia; }
+    public String getUf() {
+        return uf;
+    }
 
-    public String getDdd() { return ddd; }
-    public void setDdd(String ddd) { this.ddd = ddd; }
+    public String getIbge() {
+        return ibge;
+    }
 
-    public String getSiafi() { return siafi; }
-    public void setSiafi(String siafi) { this.siafi = siafi; }
+    public String getGia() {
+        return gia;
+    }
+
+    public String getDdd() {
+        return ddd;
+    }
+
+    public String getSiafi() {
+        return siafi;
+    }
 }

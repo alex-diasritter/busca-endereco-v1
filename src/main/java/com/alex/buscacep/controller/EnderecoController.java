@@ -1,6 +1,5 @@
 package com.alex.buscacep.controller;
 
-import com.alex.buscacep.domain.ViaCepClient;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,9 @@ public class EnderecoController {
     private EnderecoService service;
 
     @GetMapping(value = "/{cep}")
-    public ResponseEntity<EnderecoDTO> buscarEndereco(@RequestBody @PathVariable String cep) throws IOException, InterruptedException {
-    EnderecoDTO dto = service.conexãoViaCep(cep);
+    public ResponseEntity<EnderecoDTO> buscarEndereco(
+            @RequestBody @PathVariable String cep) throws IOException, InterruptedException {
+    EnderecoDTO dto = service.buscaEndereco(cep);
         return ResponseEntity.ok(dto);
     }
 }

@@ -2,6 +2,7 @@ package com.alex.buscacep.service;
 
 import com.alex.buscacep.domain.ViaCepClient;
 import com.alex.buscacep.dto.EnderecoDTO;
+import com.alex.buscacep.entity.Endereco;
 import com.alex.buscacep.repository.RegistrosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,16 @@ public class EnderecoService {
 
     @Autowired
     private RegistrosRepository repository;
+
+    public EnderecoDTO buscaEndereco (String cep) throws IOException, InterruptedException {
+
+        var endereco = repository.findByCep(cep);
+
+        if (!endereco.isEmpty()) {
+            return new EnderecoDTO(endereco);
+        }
+        return conexãoViaCep(cep);
+    }
 
     public EnderecoDTO conexãoViaCep(String cep) throws IOException, InterruptedException {
         EnderecoDTO dto = client.conecaoViaCep(cep);

@@ -1,9 +1,10 @@
 package com.alex.buscacep.entity;
 
 import com.fasterxml.jackson.annotation.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_enderecos")
@@ -11,6 +12,10 @@ import jakarta.persistence.Table;
 public class Endereco {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true) // Garante que cada CEP seja único no banco
     @JsonProperty("cep")
     private String cep;
 
@@ -45,7 +50,9 @@ public class Endereco {
     public Endereco() {
     }
 
-    // Getters e Setters
+    @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL)
+    private List<Buscas> buscas = new ArrayList<>();
+
     public String getCep() {
         return cep;
     }
@@ -124,6 +131,14 @@ public class Endereco {
 
     public void setSiafi(String siafi) {
         this.siafi = siafi;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<Buscas> getBuscas() {
+        return buscas;
     }
 
     // toString para facilitar debug
