@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/buscacep")
@@ -18,7 +19,14 @@ public class EnderecoController {
     @GetMapping(value = "/{cep}")
     public ResponseEntity<EnderecoDTO> buscarEndereco(
             @RequestBody @PathVariable String cep) throws IOException, InterruptedException {
-    EnderecoDTO dto = service.buscaEndereco(cep);
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(service.buscaEndereco(cep));
     }
+
+    @GetMapping
+    public ResponseEntity<List<EnderecoDTO>> buscarEnderecosDb(){
+        return ResponseEntity.ok(service.findAll());
+    }
+
+
+
 }

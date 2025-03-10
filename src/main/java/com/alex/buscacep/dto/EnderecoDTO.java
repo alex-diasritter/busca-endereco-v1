@@ -29,6 +29,16 @@ public class EnderecoDTO {
         this.ddd = end.get().getDdd();
     }
 
+    public EnderecoDTO(Endereco end) {
+        this.id = end.getId();
+        this.cep = end.getCep();
+        this.logradouro = end.getLogradouro();
+        this.bairro = end.getBairro();
+        this.localidade = end.getLocalidade();
+        this.uf = end.getUf();
+        this.ddd = end.getDdd();
+    }
+
     public Long getId() {
         return id;
     }

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EnderecoService {
@@ -44,5 +46,13 @@ public class EnderecoService {
 
     public EnderecoDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
         return client.conexaoViaCep(cep);
+    }
+
+    public List<EnderecoDTO> findAll(){
+        List<Endereco> enderecos = enderecoRepository.findAll();
+        List<EnderecoDTO> dtos = enderecos.stream()
+                .map(EnderecoDTO::new)
+                .collect(Collectors.toList());
+        return dtos;
     }
 }
