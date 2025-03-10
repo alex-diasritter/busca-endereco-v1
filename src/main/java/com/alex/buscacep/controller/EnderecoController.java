@@ -1,5 +1,6 @@
 package com.alex.buscacep.controller;
 
+import com.alex.buscacep.dto.BuscaDTO;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<EnderecoDTO>> buscarEnderecosDb(){
+    public ResponseEntity<List<BuscaDTO>> buscarEnderecosDb(){
         return ResponseEntity.ok(service.findAll());
     }
 

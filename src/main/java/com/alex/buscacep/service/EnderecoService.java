@@ -1,6 +1,7 @@
 package com.alex.buscacep.service;
 
 import com.alex.buscacep.config.ViaCepClientConfig;
+import com.alex.buscacep.dto.BuscaDTO;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.entity.Busca;
 import com.alex.buscacep.entity.Endereco;
@@ -48,11 +49,11 @@ public class EnderecoService {
         return client.conexaoViaCep(cep);
     }
 
-    public List<EnderecoDTO> findAll(){
-        List<Endereco> enderecos = enderecoRepository.findAll();
-        List<EnderecoDTO> dtos = enderecos.stream()
-                .map(EnderecoDTO::new)
+    public List<BuscaDTO> findAll(){
+        List<Busca> buscas = buscaRepository.findAll();
+        List<BuscaDTO> buscasDto = buscas.stream()
+                .map(BuscaDTO::new)
                 .collect(Collectors.toList());
-        return dtos;
+        return buscasDto;
     }
 }
