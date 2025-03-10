@@ -19,7 +19,6 @@ public class EnderecoDTO {
     private String ddd;
     private String siafi;
 
-    // Construtor padrão necessário para o Jackson
     public EnderecoDTO() {
     }
 

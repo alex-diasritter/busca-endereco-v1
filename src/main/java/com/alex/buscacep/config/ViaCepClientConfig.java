@@ -1,4 +1,4 @@
-package com.alex.buscacep.domain;
+package com.alex.buscacep.config;
 
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Configuration
-public class ViaCepClient {
+public class ViaCepClientConfig {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 

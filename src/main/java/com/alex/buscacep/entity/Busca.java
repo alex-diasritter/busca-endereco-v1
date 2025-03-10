@@ -6,9 +6,10 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_buscas")
-public class Buscas {
+public class Busca {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalDateTime dataHoraBusca;
@@ -17,10 +18,10 @@ public class Buscas {
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
-    public Buscas() {
+    public Busca() {
     }
 
-    public Buscas(Long id, LocalDateTime localDateTime) {
+    public Busca(Long id, LocalDateTime localDateTime) {
         this.id = id;
         this.dataHoraBusca = localDateTime;
     }

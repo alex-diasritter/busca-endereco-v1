@@ -1,10 +1,12 @@
 package com.alex.buscacep.entity;
 
+import com.alex.buscacep.dto.EnderecoDTO;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "tb_enderecos")
@@ -50,8 +52,37 @@ public class Endereco {
     public Endereco() {
     }
 
+
+    public Endereco(EnderecoDTO end) {
+        this.id = end.getId();
+        this.cep = end.getCep();
+        this.logradouro = end.getLogradouro();
+        this.complemento = end.getComplemento();
+        this.bairro = end.getBairro();
+        this.localidade = end.getLocalidade();
+        this.uf = end.getUf();
+        this.ibge = end.getIbge();
+        this.gia = end.getGia();
+        this.ddd = end.getDdd();
+        this.siafi = end.getSiafi();
+    }
+
+    public Endereco(Optional<Endereco> end) {
+        this.id = end.get().getId();
+        this.cep = end.get().getCep();
+        this.logradouro = end.get().getLogradouro();
+        this.complemento = end.get().getComplemento();
+        this.bairro = end.get().getBairro();
+        this.localidade = end.get().getLocalidade();
+        this.uf = end.get().getUf();
+        this.ibge = end.get().getIbge();
+        this.gia = end.get().getGia();
+        this.ddd = end.get().getDdd();
+        this.siafi = end.get().getSiafi();
+    }
+
     @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL)
-    private List<Buscas> buscas = new ArrayList<>();
+    private List<Busca> buscas = new ArrayList<>();
 
     public String getCep() {
         return cep;
@@ -137,7 +168,7 @@ public class Endereco {
         return id;
     }
 
-    public List<Buscas> getBuscas() {
+    public List<Busca> getBuscas() {
         return buscas;
     }
 
