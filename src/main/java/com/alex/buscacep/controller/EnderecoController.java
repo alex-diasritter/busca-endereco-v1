@@ -3,6 +3,7 @@ package com.alex.buscacep.controller;
 import com.alex.buscacep.dto.BuscaDTO;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.service.EnderecoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class EnderecoController {
 
     @GetMapping(value = "/{cep}")
     public ResponseEntity<EnderecoDTO> buscarEndereco(
-            @RequestBody @PathVariable String cep) throws IOException, InterruptedException {
+            @PathVariable @Valid String cep) throws IOException, InterruptedException {
         return ResponseEntity.ok(service.buscaEndereco(cep));
     }
 
@@ -27,7 +28,5 @@ public class EnderecoController {
     public ResponseEntity<List<BuscaDTO>> buscarEnderecosDb(){
         return ResponseEntity.ok(service.findAll());
     }
-
-
 
 }
