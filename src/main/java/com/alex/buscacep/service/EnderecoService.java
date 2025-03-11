@@ -32,16 +32,18 @@ public class EnderecoService {
 
     public EnderecoDTO buscaEndereco (String cep) throws IOException, InterruptedException {
 
-        var endereco = enderecoRepository.findByCep(cep);
-        if (endereco.isPresent()) { return new EnderecoDTO(endereco); }
-
-        Busca busca = new Busca();
-        busca.setDataHoraBusca(LocalDateTime.now());
-        buscaRepository.save(busca);
+        // var endereco = enderecoRepository.findByCep(cep);
+        // if (endereco.isPresent()) { return new EnderecoDTO(endereco); }
 
         var enderecoDTO = conexaoViaCep(cep);
         var enderecoNovo = new Endereco(enderecoDTO);
         enderecoRepository.save(enderecoNovo);
+
+        Busca busca = new Busca();
+        busca.setDataHoraBusca(LocalDateTime.now());
+        busca.setEndereco(enderecoNovo);
+        buscaRepository.save(busca);
+
         return enderecoDTO;
     }
 

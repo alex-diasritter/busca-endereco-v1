@@ -41,4 +41,12 @@ public class Busca {
     public void setDataHoraBusca(LocalDateTime dataHoraBusca) {
         this.dataHoraBusca = dataHoraBusca;
     }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }
