@@ -1,6 +1,7 @@
 package com.alex.buscacep.controller;
 
 import com.alex.buscacep.dto.BuscaDTO;
+import com.alex.buscacep.dto.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.service.EnderecoService;
 import jakarta.validation.constraints.Size;
@@ -29,7 +30,7 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<BuscaDTO>> buscarEnderecosDb(){
+    public ResponseEntity<List<BuscaEnderecoResponseDTO>> buscarEnderecosDb(){
         return ResponseEntity.ok(service.findAll());
     }
 
