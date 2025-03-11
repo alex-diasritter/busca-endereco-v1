@@ -11,7 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Configuration
-public class ViaCepClientConfig {
+public class ConsumoViaCep {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 

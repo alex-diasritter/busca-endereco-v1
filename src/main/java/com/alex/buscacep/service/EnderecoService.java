@@ -1,6 +1,6 @@
 package com.alex.buscacep.service;
 
-import com.alex.buscacep.config.ViaCepClientConfig;
+import com.alex.buscacep.config.ConsumoViaCep;
 import com.alex.buscacep.dto.BuscaDTO;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.entity.Busca;
@@ -18,9 +18,9 @@ import java.util.stream.Collectors;
 @Service
 public class EnderecoService {
 
-    private ViaCepClientConfig client;
+    private ConsumoViaCep client;
 
-    public EnderecoService (ViaCepClientConfig client){
+    public EnderecoService (ConsumoViaCep client){
         this.client = client;
     }
 
