@@ -42,7 +42,7 @@ public class Busca {
         this.dataHoraBusca = dataHoraBusca;
     }
 
-    public Endereco getEndereco() {
+    public Endereco getEndereco(){
         return endereco;
     }
 
