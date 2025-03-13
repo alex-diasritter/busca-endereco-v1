@@ -15,6 +15,7 @@ public class EnderecoDTO {
     @NotEmpty(message = "O CEP é obrigatório")
     @Size(min = 8, max = 8, message = "Deve conter 8 números")
     private String cep;
+
     private String logradouro;
     private String bairro;
     private String localidade;

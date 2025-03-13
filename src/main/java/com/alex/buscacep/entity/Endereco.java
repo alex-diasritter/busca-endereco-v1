@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Entity
@@ -17,7 +18,7 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true) // Garante que cada CEP seja único no banco
+    @Column(unique = true)
     @JsonProperty("cep")
     private String cep;
 
@@ -36,10 +37,8 @@ public class Endereco {
     @JsonProperty("ddd")
     private String ddd;
 
-    // Construtor padrão necessário para desserialização do Jackson
     public Endereco() {
     }
-
 
     public Endereco(EnderecoDTO end) {
         this.id = end.getId();
@@ -59,6 +58,10 @@ public class Endereco {
         this.localidade = end.get().getLocalidade();
         this.uf = end.get().getUf();
         this.ddd = end.get().getDdd();
+    }
+
+    public Endereco(String cep) {
+        this.cep = cep;
     }
 
     @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL)
@@ -132,5 +135,17 @@ public class Endereco {
                 ", localidade='" + localidade + '\'' +
                 ", uf='" + uf + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Endereco endereco = (Endereco) o;
+        return Objects.equals(cep, endereco.cep);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(cep);
     }
 }

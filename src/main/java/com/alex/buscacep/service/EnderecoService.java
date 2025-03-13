@@ -10,20 +10,19 @@ import com.alex.buscacep.repository.BuscaRepository;
 import com.alex.buscacep.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class EnderecoService {
 
+    @Autowired
     private ConsumoViaCep client;
-
-    public EnderecoService (ConsumoViaCep client){
-        this.client = client;
-    }
 
     @Autowired
     private BuscaRepository buscaRepository;
@@ -31,26 +30,34 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    public EnderecoDTO buscaEndereco (String cep) throws IOException, InterruptedException {
+    //criar metodo para registrar busca
 
-        // var endereco = enderecoRepository.findByCep(cep);
-        // if (endereco.isPresent()) { return new EnderecoDTO(endereco); }
-
-        var enderecoDTO = conexaoViaCep(cep);
-        var enderecoNovo = new Endereco(enderecoDTO);
-        enderecoRepository.save(enderecoNovo);
+    public BuscaEnderecoResponseDTO buscaEndereco (String cep) throws IOException, InterruptedException {
 
         Busca busca = new Busca();
-        busca.setDataHoraBusca(LocalDateTime.now());
-        busca.setEndereco(enderecoNovo);
-        buscaRepository.save(busca);
 
-        return enderecoDTO;
-    }
+        Optional<Endereco> enderecoDb = enderecoRepository.findByCep(cep);
+        if (enderecoDb.isPresent()){
+            busca.setDataHoraBusca(LocalDateTime.now());
+            busca.setEndereco(enderecoDb.get());
+            buscaRepository.save(busca);
+            return new BuscaEnderecoResponseDTO(busca);
 
-    public EnderecoDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
-        return client.conexaoViaCep(cep);
+        } else {
+
+            var enderecoDTO = conexaoViaCep(cep);
+            Endereco enderecoNovo = new Endereco(enderecoDTO);
+            enderecoRepository.save(enderecoNovo);
+
+            busca.setDataHoraBusca(LocalDateTime.now());
+            busca.setEndereco(enderecoNovo);
+            buscaRepository.save(busca);
+
+            return new BuscaEnderecoResponseDTO(busca);
+        }
     }
+    //org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_B ON PUBLIC.TB_ENDERECOS(CEP NULLS FIRST) VALUES ( /* 1 */ '24900-435' )"; SQL statement:
+
 
     public List<BuscaEnderecoResponseDTO> findAll(){
         List<Busca> buscas = buscaRepository.findAll();
@@ -59,4 +66,9 @@ public class EnderecoService {
                 .collect(Collectors.toList());
         return dtoResponse;
     }
+
+    public EnderecoDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
+        return client.conexaoViaCep(cep);
+    }
+
 }

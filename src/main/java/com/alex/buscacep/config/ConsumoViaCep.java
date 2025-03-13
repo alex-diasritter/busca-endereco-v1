@@ -2,7 +2,9 @@ package com.alex.buscacep.config;
 
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
@@ -10,7 +12,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-@Configuration
+@Component
 public class ConsumoViaCep {
 
     private final ObjectMapper objectMapper = new ObjectMapper();

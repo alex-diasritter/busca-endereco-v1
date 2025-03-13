@@ -22,7 +22,7 @@ public class EnderecoController {
     private EnderecoService service;
 
     @GetMapping(value = "/{cep}")
-    public ResponseEntity<EnderecoDTO> buscarEndereco(
+    public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(
             @PathVariable
             @Size(min = 8, max = 8, message = "O CEP deve ter apenas 8 números")
             String cep) throws IOException, InterruptedException {
