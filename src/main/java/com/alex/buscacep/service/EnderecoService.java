@@ -31,33 +31,26 @@ public class EnderecoService {
     private EnderecoRepository enderecoRepository;
 
     //criar metodo para registrar busca
+    private Busca salvarBusca(Endereco endereco){
+        Busca busca = new Busca();
+        busca.setDataHoraBusca(LocalDateTime.now());
+        busca.setEndereco(endereco);
+        buscaRepository.save(busca);
+        return busca;
+    }
 
     public BuscaEnderecoResponseDTO buscaEndereco (String cep) throws IOException, InterruptedException {
 
-        Busca busca = new Busca();
-
         Optional<Endereco> enderecoDb = enderecoRepository.findByCep(cep);
-        if (enderecoDb.isPresent()){
-            busca.setDataHoraBusca(LocalDateTime.now());
-            busca.setEndereco(enderecoDb.get());
-            buscaRepository.save(busca);
-            return new BuscaEnderecoResponseDTO(busca);
-
-        } else {
-
-            var enderecoDTO = conexaoViaCep(cep);
-            Endereco enderecoNovo = new Endereco(enderecoDTO);
-            enderecoRepository.save(enderecoNovo);
-
-            busca.setDataHoraBusca(LocalDateTime.now());
-            busca.setEndereco(enderecoNovo);
-            buscaRepository.save(busca);
-
-            return new BuscaEnderecoResponseDTO(busca);
+        if (enderecoDb.isPresent()) {
+            return new BuscaEnderecoResponseDTO(salvarBusca(enderecoDb.get()));
         }
-    }
-    //org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_B ON PUBLIC.TB_ENDERECOS(CEP NULLS FIRST) VALUES ( /* 1 */ '24900-435' )"; SQL statement:
 
+        var enderecoDTO = conexaoViaCep(cep);
+        Endereco enderecoNovo = new Endereco(enderecoDTO);
+        enderecoRepository.save(enderecoNovo);
+        return new BuscaEnderecoResponseDTO(salvarBusca(enderecoNovo));
+    }
 
     public List<BuscaEnderecoResponseDTO> findAll(){
         List<Busca> buscas = buscaRepository.findAll();
@@ -70,5 +63,4 @@ public class EnderecoService {
     public EnderecoDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
         return client.conexaoViaCep(cep);
     }
-
 }
