@@ -41,6 +41,15 @@ public class EnderecoDTO {
         this.ddd = end.getDdd();
     }
 
+    public EnderecoDTO(String cep, String logradouro, String bairro, String localidade, String uf, String ddd) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
+        this.ddd = ddd;
+    }
+
     public String getCep() {
         return cep;
     }
