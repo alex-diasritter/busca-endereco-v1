@@ -21,6 +21,7 @@ public class ConsumoViaCep {
         String url = "https://viacep.com.br/ws/" + cep + "/json/";
 
         HttpClient client = HttpClient.newHttpClient();
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .build();

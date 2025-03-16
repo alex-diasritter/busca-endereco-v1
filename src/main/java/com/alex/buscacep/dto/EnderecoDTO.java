@@ -74,4 +74,16 @@ public class EnderecoDTO {
     public String getDdd() {
         return ddd;
     }
+
+    @Override
+    public String toString() {
+        return "EnderecoDTO{" +
+                "cep='" + cep + '\'' +
+                ", logradouro='" + logradouro + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", localidade='" + localidade + '\'' +
+                ", uf='" + uf + '\'' +
+                ", ddd='" + ddd + '\'' +
+                '}';
+    }
 }

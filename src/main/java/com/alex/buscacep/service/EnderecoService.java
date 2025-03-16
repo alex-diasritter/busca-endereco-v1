@@ -1,6 +1,6 @@
 package com.alex.buscacep.service;
 
-import com.alex.buscacep.config.ConsumoViaCep;
+import com.alex.buscacep.config.RestTemplateConfig;
 import com.alex.buscacep.dto.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.entity.Busca;
@@ -9,7 +9,6 @@ import com.alex.buscacep.repository.BuscaRepository;
 import com.alex.buscacep.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
 public class EnderecoService {
 
     @Autowired
-    private ConsumoViaCep client;
+    private CepService client;
 
     @Autowired
     private BuscaRepository buscaRepository;
@@ -59,6 +58,6 @@ public class EnderecoService {
     }
 
     public EnderecoDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
-        return client.conexaoViaCep(cep);
+        return client.viaCep(cep);
     }
 }
