@@ -1,7 +1,6 @@
 package com.alex.buscacep.service;
 
 import com.alex.buscacep.config.ConsumoViaCep;
-import com.alex.buscacep.dto.BuscaDTO;
 import com.alex.buscacep.dto.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.entity.Busca;
@@ -30,7 +29,6 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    //criar metodo para registrar busca
     private Busca salvarBusca(Endereco endereco){
         Busca busca = new Busca();
         busca.setDataHoraBusca(LocalDateTime.now());
@@ -41,7 +39,7 @@ public class EnderecoService {
 
     public BuscaEnderecoResponseDTO buscaEndereco (String cep) throws IOException, InterruptedException {
 
-        Optional<Endereco> enderecoDb = enderecoRepository.findByCep(cep);
+        Optional<Endereco> enderecoDb = enderecoRepository.findByCep(cep.substring(0, 5) + "-" + cep.substring(5));
         if (enderecoDb.isPresent()) {
             return new BuscaEnderecoResponseDTO(salvarBusca(enderecoDb.get()));
         }

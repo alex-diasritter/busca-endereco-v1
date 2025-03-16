@@ -2,7 +2,7 @@ package com.alex.buscacep.dto;
 
 import com.alex.buscacep.entity.Endereco;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.util.Optional;
@@ -10,9 +10,7 @@ import java.util.Optional;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EnderecoDTO {
 
-    private Long id;
-
-    @NotEmpty(message = "O CEP é obrigatório")
+    @NotBlank(message = "O CEP é obrigatório")
     @Size(min = 8, max = 8, message = "Deve conter 8 números")
     private String cep;
 
@@ -26,7 +24,6 @@ public class EnderecoDTO {
     }
 
     public EnderecoDTO(Optional<Endereco> end) {
-        this.id = end.get().getId();
         this.cep = end.get().getCep();
         this.logradouro = end.get().getLogradouro();
         this.bairro = end.get().getBairro();
@@ -36,17 +33,12 @@ public class EnderecoDTO {
     }
 
     public EnderecoDTO(Endereco end) {
-        this.id = end.getId();
         this.cep = end.getCep();
         this.logradouro = end.getLogradouro();
         this.bairro = end.getBairro();
         this.localidade = end.getLocalidade();
         this.uf = end.getUf();
         this.ddd = end.getDdd();
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getCep() {

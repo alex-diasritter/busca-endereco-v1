@@ -18,7 +18,7 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 9)
     @JsonProperty("cep")
     private String cep;
 
@@ -41,7 +41,6 @@ public class Endereco {
     }
 
     public Endereco(EnderecoDTO end) {
-        this.id = end.getId();
         this.cep = end.getCep();
         this.logradouro = end.getLogradouro();
         this.bairro = end.getBairro();
