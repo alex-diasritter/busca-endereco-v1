@@ -22,8 +22,15 @@ class EnderecoControllerTest {
 
     @Test
     @DisplayName("Deverá retornar 400 porque o cep está inválido")
-    void consultarEndereco() throws Exception {
+    void consultarEndereco400() throws Exception {
         MockHttpServletResponse response = mvc.perform(get("/buscacep/feof4oi53423")).andReturn().getResponse();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
+    }
+
+    @Test
+    @DisplayName("Deverá retornar 200 porque o cep está válido")
+    void consultarEndereco200() throws Exception {
+        MockHttpServletResponse response = mvc.perform(get("/buscacep/24900534")).andReturn().getResponse();
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
     }
 }
