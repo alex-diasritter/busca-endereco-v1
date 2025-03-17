@@ -1,6 +1,5 @@
 package com.alex.buscacep.service;
 
-import com.alex.buscacep.config.RestTemplateConfig;
 import com.alex.buscacep.dto.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.dto.EnderecoDTO;
 import com.alex.buscacep.entity.Busca;
