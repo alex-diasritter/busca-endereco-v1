@@ -1,26 +1,25 @@
-package com.alex.buscacep.dto;
+package com.alex.buscacep.domain.busca;
 
-import com.alex.buscacep.entity.Busca;
-import com.alex.buscacep.entity.Endereco;
+import com.alex.buscacep.domain.endereco.Endereco;
 
 import java.time.LocalDateTime;
 
-public class BuscaDTO {
+public class BuscaRequestDTO {
 
     private Long id;
     private LocalDateTime dataHoraBusca;
     private Endereco endereco;
 
-    public BuscaDTO() {
+    public BuscaRequestDTO() {
     }
 
-    public BuscaDTO(Long id, LocalDateTime dataHoraBusca, Endereco endereco) {
+    public BuscaRequestDTO(Long id, LocalDateTime dataHoraBusca, Endereco endereco) {
         this.id = id;
         this.dataHoraBusca = dataHoraBusca;
         this.endereco = endereco;
     }
 
-    public BuscaDTO(Busca busca) {
+    public BuscaRequestDTO(Busca busca) {
         this.id = getId();
         this.dataHoraBusca = getDataHoraBusca();
         this.endereco = getEndereco();

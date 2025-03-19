@@ -1,6 +1,6 @@
 package com.alex.buscacep.service;
 
-import com.alex.buscacep.dto.EnderecoDTO;
+import com.alex.buscacep.domain.endereco.EnderecoRequestDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,8 +13,8 @@ public class CepService {
         this.restTemplate = restTemplate;
     }
 
-    public EnderecoDTO viaCep(String cep) {
+    public EnderecoRequestDTO viaCep(String cep) {
         String url = "https://viacep.com.br/ws/" + cep + "/json/";
-        return restTemplate.getForObject(url, EnderecoDTO.class);
+        return restTemplate.getForObject(url, EnderecoRequestDTO.class);
     }
 }

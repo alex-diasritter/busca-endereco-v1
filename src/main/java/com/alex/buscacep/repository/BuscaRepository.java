@@ -1,6 +1,6 @@
 package com.alex.buscacep.repository;
 
-import com.alex.buscacep.entity.Busca;
+import com.alex.buscacep.domain.busca.Busca;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,6 +1,5 @@
-package com.alex.buscacep.dto;
+package com.alex.buscacep.domain.endereco;
 
-import com.alex.buscacep.entity.Endereco;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -8,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import java.util.Optional;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EnderecoDTO {
+public class EnderecoRequestDTO {
 
     @NotBlank(message = "O CEP é obrigatório")
     @Size(min = 8, max = 8, message = "Deve conter 8 números")
@@ -20,10 +19,10 @@ public class EnderecoDTO {
     private String uf;
     private String ddd;
 
-    public EnderecoDTO() {
+    public EnderecoRequestDTO() {
     }
 
-    public EnderecoDTO(Optional<Endereco> end) {
+    public EnderecoRequestDTO(Optional<Endereco> end) {
         this.cep = end.get().getCep();
         this.logradouro = end.get().getLogradouro();
         this.bairro = end.get().getBairro();
@@ -32,7 +31,7 @@ public class EnderecoDTO {
         this.ddd = end.get().getDdd();
     }
 
-    public EnderecoDTO(Endereco end) {
+    public EnderecoRequestDTO(Endereco end) {
         this.cep = end.getCep();
         this.logradouro = end.getLogradouro();
         this.bairro = end.getBairro();
@@ -41,7 +40,7 @@ public class EnderecoDTO {
         this.ddd = end.getDdd();
     }
 
-    public EnderecoDTO(String cep, String logradouro, String bairro, String localidade, String uf, String ddd) {
+    public EnderecoRequestDTO(String cep, String logradouro, String bairro, String localidade, String uf, String ddd) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.bairro = bairro;

@@ -1,6 +1,6 @@
 package com.alex.buscacep.controller;
 
-import com.alex.buscacep.dto.BuscaEnderecoResponseDTO;
+import com.alex.buscacep.domain.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.service.EnderecoService;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,9 @@ public class EnderecoController {
 
     @GetMapping(value = "/{cep}")
     public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(
-            @PathVariable
-            @Size(min = 8, max = 8, message = "O CEP deve ter apenas 8 números")
-            String cep) throws IOException, InterruptedException {
+            @PathVariable @Size(min = 8, max = 8, message = "O CEP deve ter apenas 8 números") String cep)
+            throws IOException, InterruptedException {
+
         return ResponseEntity.ok(service.buscaEndereco(cep));
     }
 

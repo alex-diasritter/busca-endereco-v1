@@ -1,6 +1,6 @@
-package com.alex.buscacep.entity;
+package com.alex.buscacep.domain.endereco;
 
-import com.alex.buscacep.dto.EnderecoDTO;
+import com.alex.buscacep.domain.busca.Busca;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Entity
+@Entity(name = "endereco")
 @Table(name = "tb_enderecos")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Endereco {
@@ -40,7 +40,7 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(EnderecoDTO end) {
+    public Endereco(EnderecoRequestDTO end) {
         this.cep = end.getCep();
         this.logradouro = end.getLogradouro();
         this.bairro = end.getBairro();

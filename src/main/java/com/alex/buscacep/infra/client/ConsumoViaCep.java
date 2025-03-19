@@ -1,9 +1,7 @@
-package com.alex.buscacep.config;
+package com.alex.buscacep.infra.client;
 
-import com.alex.buscacep.dto.EnderecoDTO;
+import com.alex.buscacep.domain.endereco.EnderecoRequestDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -17,7 +15,7 @@ public class ConsumoViaCep {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public EnderecoDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
+    public EnderecoRequestDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
         String url = "https://viacep.com.br/ws/" + cep + "/json/";
 
         HttpClient client = HttpClient.newHttpClient();
@@ -30,6 +28,6 @@ public class ConsumoViaCep {
                 request,
                 HttpResponse.BodyHandlers.ofString());
 
-        return objectMapper.readValue(response.body(), EnderecoDTO.class);
+        return objectMapper.readValue(response.body(), EnderecoRequestDTO.class);
     }
 }

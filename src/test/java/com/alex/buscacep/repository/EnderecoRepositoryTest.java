@@ -1,7 +1,7 @@
 package com.alex.buscacep.repository;
 
-import com.alex.buscacep.dto.EnderecoDTO;
-import com.alex.buscacep.entity.Endereco;
+import com.alex.buscacep.domain.endereco.EnderecoRequestDTO;
+import com.alex.buscacep.domain.endereco.Endereco;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,8 @@ class EnderecoRepositoryTest {
     @DisplayName("Should get Endereco succesfully from DB")
     void findByCepCase1() {
         LocalDateTime agora = LocalDateTime.now();
-        EnderecoDTO e = new EnderecoDTO("29300849", "Rua dos bobos", "Bobões", "BoboCity", "BC", "00");
+        EnderecoRequestDTO e = new EnderecoRequestDTO("29300849", "Rua dos bobos", "Bobões",
+                "BoboCity", "BC", "00");
         createEndereco(e);
         Optional<Endereco> result = this.enderecoRepository.findByCep("29300849");
         assertEquals(true, result.isPresent());
@@ -43,7 +44,7 @@ class EnderecoRepositoryTest {
         assertFalse(result.isPresent());
     }
 
-    private Endereco createEndereco(EnderecoDTO e){
+    private Endereco createEndereco(EnderecoRequestDTO e){
         Endereco endereco = new Endereco(e);
         this.entityManager.persist(endereco);
         this.entityManager.flush();

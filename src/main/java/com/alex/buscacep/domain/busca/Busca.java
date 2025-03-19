@@ -1,5 +1,6 @@
-package com.alex.buscacep.entity;
+package com.alex.buscacep.domain.busca;
 
+import com.alex.buscacep.domain.endereco.Endereco;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
