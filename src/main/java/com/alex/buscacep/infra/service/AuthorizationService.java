@@ -20,8 +20,8 @@ public class AuthorizationService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("Usuário request: " + username);
-        var user = repository.findByUsername(username);
-        System.out.println("carregando usuário: " + user );
+        UserDetails user = repository.findByUsername(username);
+        System.out.println("Usuário DB: " + user.getUsername());
         return user;
     }
 

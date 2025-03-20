@@ -1,3 +1,6 @@
 package com.alex.buscacep.domain.dtos.request;
 
-public record AuthenticationRequestDTO(String username, String password){}
+import jakarta.validation.constraints.NotBlank;
+
+public record AuthenticationRequestDTO(@NotBlank(message = "Username cannot be null") String username,
+                                       @NotBlank(message = "Password cannot be null") String password){}

@@ -16,11 +16,16 @@ public class Users implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "username")
     private String username;
 
     private String password;
 
+    @Enumerated(EnumType.ORDINAL)
     private UserRole role;
+
+    public Users() {
+    }
 
     public Users(String username, String password, UserRole role) {
         this.username = username;
@@ -45,7 +50,7 @@ public class Users implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.getUsername();
+        return this.username;
     }
 
     @Override
