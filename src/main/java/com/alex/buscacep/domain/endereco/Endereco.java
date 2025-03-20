@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Entity(name = "endereco")
+@Entity
 @Table(name = "tb_enderecos")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Endereco {

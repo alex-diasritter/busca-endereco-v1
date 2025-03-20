@@ -1,4 +1,4 @@
-package com.alex.buscacep.domain;
+package com.alex.buscacep.domain.response;
 
 import com.alex.buscacep.domain.busca.Busca;
 

@@ -1,6 +1,6 @@
 package com.alex.buscacep.service;
 
-import com.alex.buscacep.domain.BuscaEnderecoResponseDTO;
+import com.alex.buscacep.domain.response.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.domain.endereco.EnderecoRequestDTO;
 import com.alex.buscacep.domain.busca.Busca;
 import com.alex.buscacep.domain.endereco.Endereco;
