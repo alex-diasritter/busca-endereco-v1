@@ -19,13 +19,17 @@ public class AuthorizationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByUsername(username);
+        System.out.println("Usuário request: " + username);
+        var user = repository.findByUsername(username);
+        System.out.println("carregando usuário: " + user );
+        return user;
     }
 
     public ResponseEntity register( RegisterRequestDTO registerDTO){
         if (this.repository.findByUsername(registerDTO.username()) != null) return ResponseEntity.badRequest().build();
         String encryptedPassword = new BCryptPasswordEncoder().encode(registerDTO.password());
         Users newUser = new Users(registerDTO.username(), encryptedPassword, registerDTO.role());
+        System.out.println("novo usuário: "+newUser.getPassword());
         this.repository.save(newUser);
         return ResponseEntity.ok().build();
     }
