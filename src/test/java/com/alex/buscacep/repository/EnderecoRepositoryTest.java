@@ -1,7 +1,8 @@
 package com.alex.buscacep.repository;
 
-import com.alex.buscacep.domain.endereco.EnderecoRequestDTO;
-import com.alex.buscacep.domain.endereco.Endereco;
+import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
+import com.alex.buscacep.domain.Endereco;
+import com.alex.buscacep.infra.repository.EnderecoRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

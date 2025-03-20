@@ -1,6 +1,6 @@
-package com.alex.buscacep.service;
+package com.alex.buscacep.infra.service;
 
-import com.alex.buscacep.domain.endereco.EnderecoRequestDTO;
+import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

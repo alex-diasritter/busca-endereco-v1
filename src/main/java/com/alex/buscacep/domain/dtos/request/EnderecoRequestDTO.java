@@ -1,5 +1,6 @@
-package com.alex.buscacep.domain.endereco;
+package com.alex.buscacep.domain.dtos.request;
 
+import com.alex.buscacep.domain.Endereco;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

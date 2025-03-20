@@ -1,6 +1,6 @@
-package com.alex.buscacep.repository;
+package com.alex.buscacep.infra.repository;
 
-import com.alex.buscacep.domain.user.Users;
+import com.alex.buscacep.domain.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -1,4 +1,4 @@
-package com.alex.buscacep.domain.user;
+package com.alex.buscacep.domain;
 
 public enum UserRole {
 

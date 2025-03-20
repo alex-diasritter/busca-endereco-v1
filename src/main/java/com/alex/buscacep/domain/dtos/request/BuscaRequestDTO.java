@@ -1,6 +1,7 @@
-package com.alex.buscacep.domain.busca;
+package com.alex.buscacep.domain.dtos.request;
 
-import com.alex.buscacep.domain.endereco.Endereco;
+import com.alex.buscacep.domain.Busca;
+import com.alex.buscacep.domain.Endereco;
 
 import java.time.LocalDateTime;
 

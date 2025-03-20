@@ -1,4 +1,4 @@
-package com.alex.buscacep.domain.user;
+package com.alex.buscacep.domain;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tb_users")
@@ -22,6 +21,12 @@ public class Users implements UserDetails {
     private String password;
 
     private UserRole role;
+
+    public Users(String username, String password, UserRole role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 
     //aqui retorna-se as roles de cada usuário
     @Override

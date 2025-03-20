@@ -1,7 +1,7 @@
 package com.alex.buscacep.controller;
 
-import com.alex.buscacep.domain.response.BuscaEnderecoResponseDTO;
-import com.alex.buscacep.service.EnderecoService;
+import com.alex.buscacep.domain.dtos.response.BuscaEnderecoResponseDTO;
+import com.alex.buscacep.infra.service.EnderecoService;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

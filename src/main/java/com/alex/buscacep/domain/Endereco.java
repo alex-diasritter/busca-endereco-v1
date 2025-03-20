@@ -1,6 +1,6 @@
-package com.alex.buscacep.domain.endereco;
+package com.alex.buscacep.domain;
 
-import com.alex.buscacep.domain.busca.Busca;
+import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 

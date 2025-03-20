@@ -1,6 +1,6 @@
 package com.alex.buscacep.infra.client;
 
-import com.alex.buscacep.domain.endereco.EnderecoRequestDTO;
+import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
