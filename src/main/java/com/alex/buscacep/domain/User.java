@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_users")
-public class Users implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class Users implements UserDetails {
     @Enumerated(EnumType.ORDINAL)
     private UserRole role;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(String username, String password, UserRole role) {
+    public User(String username, String password, UserRole role) {
         this.username = username;
         this.password = password;
         this.role = role;

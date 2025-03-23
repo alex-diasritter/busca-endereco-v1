@@ -1,7 +1,10 @@
 package com.alex.buscacep.controller;
 
+import com.alex.buscacep.domain.User;
 import com.alex.buscacep.domain.dtos.request.AuthenticationRequestDTO;
 import com.alex.buscacep.domain.dtos.request.RegisterRequestDTO;
+import com.alex.buscacep.domain.dtos.response.LoginResponseDTO;
+import com.alex.buscacep.infra.security.TokenService;
 import com.alex.buscacep.infra.service.AuthorizationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
     @Autowired
+    TokenService tokenService;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -26,8 +32,11 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationRequestDTO data){
         var login = new UsernamePasswordAuthenticationToken(data.username(), data.password());
-        this.authenticationManager.authenticate(login);
-        return ResponseEntity.ok().build();
+        var auth = this.authenticationManager.authenticate(login);
+
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")

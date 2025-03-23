@@ -1,6 +1,6 @@
 package com.alex.buscacep.infra.service;
 
-import com.alex.buscacep.domain.Users;
+import com.alex.buscacep.domain.User;
 import com.alex.buscacep.domain.dtos.request.RegisterRequestDTO;
 import com.alex.buscacep.infra.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class AuthorizationService implements UserDetailsService {
     public ResponseEntity register( RegisterRequestDTO registerDTO){
         if (this.repository.findByUsername(registerDTO.username()) != null) return ResponseEntity.badRequest().build();
         String encryptedPassword = new BCryptPasswordEncoder().encode(registerDTO.password());
-        Users newUser = new Users(registerDTO.username(), encryptedPassword, registerDTO.role());
+        User newUser = new User(registerDTO.username(), encryptedPassword, registerDTO.role());
         System.out.println("novo usuário: "+newUser.getPassword());
         this.repository.save(newUser);
         return ResponseEntity.ok().build();
