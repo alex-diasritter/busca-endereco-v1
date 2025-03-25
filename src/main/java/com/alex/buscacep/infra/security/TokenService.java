@@ -1,6 +1,6 @@
 package com.alex.buscacep.infra.security;
 
-import com.alex.buscacep.domain.User;
+import com.alex.buscacep.domain.models.User;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;

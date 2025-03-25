@@ -32,6 +32,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.DELETE,"/buscacep/{cep}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/auth/{username}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/buscacep").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/buscacep/{cep}").hasRole("USER")
                         .anyRequest().authenticated())

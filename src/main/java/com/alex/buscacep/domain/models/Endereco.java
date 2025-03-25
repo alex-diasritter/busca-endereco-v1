@@ -1,4 +1,4 @@
-package com.alex.buscacep.domain;
+package com.alex.buscacep.domain.models;
 
 import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import com.fasterxml.jackson.annotation.*;

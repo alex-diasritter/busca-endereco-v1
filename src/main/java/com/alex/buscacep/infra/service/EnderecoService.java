@@ -2,8 +2,8 @@ package com.alex.buscacep.infra.service;
 
 import com.alex.buscacep.domain.dtos.response.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
-import com.alex.buscacep.domain.Busca;
-import com.alex.buscacep.domain.Endereco;
+import com.alex.buscacep.domain.models.Busca;
+import com.alex.buscacep.domain.models.Endereco;
 import com.alex.buscacep.infra.repository.BuscaRepository;
 import com.alex.buscacep.infra.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
