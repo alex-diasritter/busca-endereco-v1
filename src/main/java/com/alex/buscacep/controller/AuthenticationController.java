@@ -49,14 +49,13 @@ public class AuthenticationController {
     }
 
 
-    //Está retornando 403 e não consegui resolver
-/*
+    //Está retornando 403 e
+
     @DeleteMapping("/{username}")
     public ResponseEntity delete(@PathVariable String username){
         var result = authorizationService.delete(username);
         if (result) return ResponseEntity.ok().build();
         return ResponseEntity.noContent().build();
     }
- */
 
 }
