@@ -59,4 +59,5 @@ public class EnderecoService {
     public EnderecoRequestDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
         return client.viaCep(cep);
     }
+
 }

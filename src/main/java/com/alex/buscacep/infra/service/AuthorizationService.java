@@ -6,6 +6,8 @@ import com.alex.buscacep.domain.dtos.request.RegisterRequestDTO;
 import com.alex.buscacep.infra.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,12 +29,18 @@ public class AuthorizationService implements UserDetailsService {
     public UserDTO register(RegisterRequestDTO registerDTO){
 
         var result = repository.findByUsername(registerDTO.username());
-        if (result != null) return new UserDTO(result.getUsername(), result.getAuthorities());
+        if (result != null) return new UserDTO(result.getUsername());
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(registerDTO.password());
         User newUser = new User(registerDTO.username(), encryptedPassword, registerDTO.role());
         this.repository.save(newUser);
-        return new UserDTO(newUser.getUsername(), newUser.getAuthorities());
+        return new UserDTO(newUser.getUsername());
+    }
+
+    @org.springframework.transaction.annotation.Transactional(readOnly = true)
+    public Page<UserDTO> findAll(Pageable pageable){
+        Page<User> results = repository.findAll(pageable);
+        return results.map(p -> new UserDTO(p.getUsername()));
     }
 
 
