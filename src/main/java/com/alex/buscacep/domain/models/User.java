@@ -1,6 +1,7 @@
 package com.alex.buscacep.domain.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,11 +17,14 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     @Column(name = "username")
     private String username;
 
+    @NotEmpty
     private String password;
 
+    @NotEmpty
     @Enumerated(EnumType.ORDINAL)
     private UserRole role;
 
