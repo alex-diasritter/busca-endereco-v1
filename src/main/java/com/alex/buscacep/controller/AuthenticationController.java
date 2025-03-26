@@ -42,7 +42,7 @@ public class AuthenticationController {
                     content = {
                             @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = User.class)
+                                    schema = @Schema(implementation = UserDTO.class)
                             )
                     }
             ),
@@ -72,7 +72,7 @@ public class AuthenticationController {
                     content = {
                             @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = User.class)
+                                    schema = @Schema(implementation = UserDTO.class)
                             )
                     }
             ),
@@ -101,7 +101,7 @@ public class AuthenticationController {
                     content = {
                             @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = User.class)
+                                    schema = @Schema(implementation = UserDTO.class)
                             )
                     }
             )})
