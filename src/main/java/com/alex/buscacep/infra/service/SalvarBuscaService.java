@@ -1,8 +1,8 @@
-package com.alex.buscacep.service;
+package com.alex.buscacep.infra.service;
 
-import com.alex.buscacep.domain.busca.Busca;
-import com.alex.buscacep.domain.endereco.Endereco;
-import com.alex.buscacep.repository.BuscaRepository;
+import com.alex.buscacep.domain.models.Busca;
+import com.alex.buscacep.domain.models.Endereco;
+import com.alex.buscacep.infra.repository.BuscaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
