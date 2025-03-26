@@ -29,9 +29,17 @@ public class SecurityConfigurations {
                 .sessionManagement(s
                         -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+                        // Permite acesso ao Swagger e recursos relacionados
+                        .requestMatchers(
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/swagger-resources/**",
+                                "/webjars/**"
+                        ).permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.DELETE,"/buscacep/{cep}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/buscacep/{cep}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/auth/{username}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/buscacep").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/buscacep/{cep}").hasRole("USER")
@@ -42,14 +50,13 @@ public class SecurityConfigurations {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager (AuthenticationConfiguration authenticationConfiguration)
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
             throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
