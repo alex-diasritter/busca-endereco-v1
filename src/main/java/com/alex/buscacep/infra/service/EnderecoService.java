@@ -1,11 +1,11 @@
-package com.alex.buscacep.service;
+package com.alex.buscacep.infra.service;
 
-import com.alex.buscacep.domain.BuscaEnderecoResponseDTO;
-import com.alex.buscacep.domain.endereco.EnderecoRequestDTO;
-import com.alex.buscacep.domain.busca.Busca;
-import com.alex.buscacep.domain.endereco.Endereco;
-import com.alex.buscacep.repository.BuscaRepository;
-import com.alex.buscacep.repository.EnderecoRepository;
+import com.alex.buscacep.domain.dtos.response.BuscaEnderecoResponseDTO;
+import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
+import com.alex.buscacep.domain.models.Busca;
+import com.alex.buscacep.domain.models.Endereco;
+import com.alex.buscacep.infra.repository.BuscaRepository;
+import com.alex.buscacep.infra.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,4 +54,5 @@ public class EnderecoService {
     public EnderecoRequestDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
         return client.viaCep(cep);
     }
+
 }

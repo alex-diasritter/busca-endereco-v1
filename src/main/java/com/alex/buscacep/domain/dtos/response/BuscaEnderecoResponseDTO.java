@@ -1,6 +1,6 @@
-package com.alex.buscacep.domain;
+package com.alex.buscacep.domain.dtos.response;
 
-import com.alex.buscacep.domain.busca.Busca;
+import com.alex.buscacep.domain.models.Busca;
 
 import java.time.LocalDateTime;
 
