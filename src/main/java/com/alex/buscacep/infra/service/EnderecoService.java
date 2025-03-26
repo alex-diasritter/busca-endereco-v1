@@ -27,25 +27,20 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    private Busca salvarBusca(Endereco endereco){
-        Busca busca = new Busca();
-        busca.setDataHoraBusca(LocalDateTime.now());
-        busca.setEndereco(endereco);
-        buscaRepository.save(busca);
-        return busca;
-    }
+    @Autowired
+    private SalvarBuscaService salvarBuscaService;
 
     public BuscaEnderecoResponseDTO buscaEndereco (String cep) throws IOException, InterruptedException {
 
         Optional<Endereco> enderecoDb = enderecoRepository.findByCep(cep.substring(0, 5) + "-" + cep.substring(5));
         if (enderecoDb.isPresent()) {
-            return new BuscaEnderecoResponseDTO(salvarBusca(enderecoDb.get()));
+            return new BuscaEnderecoResponseDTO(salvarBuscaService.salvarBusca(enderecoDb.get()));
         }
 
         var enderecoDTO = conexaoViaCep(cep);
         Endereco enderecoNovo = new Endereco(enderecoDTO);
         enderecoRepository.save(enderecoNovo);
-        return new BuscaEnderecoResponseDTO(salvarBusca(enderecoNovo));
+        return new BuscaEnderecoResponseDTO(salvarBuscaService.salvarBusca(enderecoNovo));
     }
 
     public List<BuscaEnderecoResponseDTO> findAll(){
