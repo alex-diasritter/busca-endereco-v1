@@ -108,12 +108,14 @@ public class AuthenticationController {
         return ResponseEntity.ok(authorizationService.findAll(pageable));
     }
 
-    //Está retornando 403
+    /*Está retornando 403
     @DeleteMapping("/{username}")
     public ResponseEntity delete(@PathVariable String username){
         var result = authorizationService.delete(username);
         if (result) return ResponseEntity.ok().build();
         return ResponseEntity.noContent().build();
     }
+
+     */
 
 }

@@ -18,7 +18,19 @@ public class Busca {
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id") // Chave estrangeira para User
+    private User user;
+
     public Busca() {
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDateTime getDataHoraBusca() {

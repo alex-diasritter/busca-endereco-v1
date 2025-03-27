@@ -45,7 +45,7 @@ public class AuthorizationService implements UserDetailsService {
 
 
     //Está retornando 403 e não consegui resolver
-
+/*
     @Transactional
     public boolean delete(String id) {
         Optional<User> usuario = repository.findById(id);
@@ -55,4 +55,6 @@ public class AuthorizationService implements UserDetailsService {
         }
         return false;
     }
+
+ */
 }

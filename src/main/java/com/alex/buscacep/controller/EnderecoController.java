@@ -8,9 +8,10 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.validation.constraints.Size;
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,12 +49,16 @@ public class EnderecoController {
             )
     })
     @GetMapping(value = "/{cep}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(
-            @PathVariable String cep)
+            @PathVariable String cep,
+            Authentication authentication)
             throws IOException, InterruptedException {
-
-        return ResponseEntity.ok(service.buscaEndereco(cep));
+        User usuario = (User) authentication.getPrincipal();
+        return ResponseEntity.ok(service.buscaEndereco(cep, usuario));
     }
+
+
 
     @Operation(summary = "Rota responsável por acessar o db e retornar a lista de endereços buscados com a data")
     @ApiResponses(value = {
@@ -81,5 +86,4 @@ public class EnderecoController {
     public ResponseEntity<List<BuscaEnderecoResponseDTO>> buscarEnderecosComDataNoDb(){
         return ResponseEntity.ok(service.findAll());
     }
-
 }

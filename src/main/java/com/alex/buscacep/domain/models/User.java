@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -35,6 +37,9 @@ public class User implements UserDetails {
         this.password = password;
         this.role = role;
     }
+
+    @OneToMany(mappedBy = "user") // Relação com Busca
+    private List<Busca> buscas = new ArrayList<>();
 
     //aqui retorna-se as roles de cada usuário
     @Override

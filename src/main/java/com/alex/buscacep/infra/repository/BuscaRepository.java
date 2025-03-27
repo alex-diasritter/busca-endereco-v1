@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface BuscaRepository extends JpaRepository<Busca, String> {
+public interface BuscaRepository extends JpaRepository<Busca, Long> {
 
     @Query(value = "SELECT b FROM Busca b JOIN FETCH b.endereco")
     List<Busca> findAll();
