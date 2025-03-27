@@ -1,9 +1,8 @@
 package com.alex.buscacep.controller;
 
+import com.alex.buscacep.domain.dtos.request.UserLogin;
 import com.alex.buscacep.domain.dtos.response.UserDTO;
 import com.alex.buscacep.domain.models.User;
-import com.alex.buscacep.domain.dtos.request.AuthenticationRequestDTO;
-import com.alex.buscacep.domain.dtos.request.RegisterRequestDTO;
 import com.alex.buscacep.domain.dtos.response.LoginResponseDTO;
 import com.alex.buscacep.infra.security.TokenService;
 import com.alex.buscacep.infra.service.AuthorizationService;
@@ -57,8 +56,8 @@ public class AuthenticationController {
             )
     })
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationRequestDTO data){
-        var login = new UsernamePasswordAuthenticationToken(data.username(), data.password());
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid User data){
+        var login = new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword());
         var auth = this.authenticationManager.authenticate(login);
         var token = tokenService.generateToken((User) auth.getPrincipal());
         return ResponseEntity.ok(new LoginResponseDTO(token));
@@ -87,11 +86,10 @@ public class AuthenticationController {
             )
     })
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> register(@RequestBody @Valid RegisterRequestDTO data){
+    public ResponseEntity<UserDTO> register(@RequestBody @Valid User data){
         var user = authorizationService.register(data);
         return ResponseEntity.ok(user);
     }
-
 
     @Operation(summary = "Rota responsável por listar usuários do sistema")
     @ApiResponses(value = {
@@ -109,7 +107,6 @@ public class AuthenticationController {
     public ResponseEntity<Page<UserDTO>> list(Pageable pageable){
         return ResponseEntity.ok(authorizationService.findAll(pageable));
     }
-
 
     //Está retornando 403
     @DeleteMapping("/{username}")

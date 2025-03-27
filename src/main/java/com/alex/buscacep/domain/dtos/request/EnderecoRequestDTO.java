@@ -1,45 +1,18 @@
 package com.alex.buscacep.domain.dtos.request;
 
-import com.alex.buscacep.domain.models.Endereco;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
-import java.util.Optional;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EnderecoRequestDTO {
 
     @NotBlank(message = "O CEP é obrigatório")
-    @Size(min = 8, max = 8, message = "Deve conter 8 números")
     private String cep;
-
     private String logradouro;
     private String bairro;
     private String localidade;
     private String uf;
     private String ddd;
-
-    public EnderecoRequestDTO() {
-    }
-
-    public EnderecoRequestDTO(Optional<Endereco> end) {
-        this.cep = end.get().getCep();
-        this.logradouro = end.get().getLogradouro();
-        this.bairro = end.get().getBairro();
-        this.localidade = end.get().getLocalidade();
-        this.uf = end.get().getUf();
-        this.ddd = end.get().getDdd();
-    }
-
-    public EnderecoRequestDTO(Endereco end) {
-        this.cep = end.getCep();
-        this.logradouro = end.getLogradouro();
-        this.bairro = end.getBairro();
-        this.localidade = end.getLocalidade();
-        this.uf = end.getUf();
-        this.ddd = end.getDdd();
-    }
 
     public EnderecoRequestDTO(String cep, String logradouro, String bairro, String localidade, String uf, String ddd) {
         this.cep = cep;
@@ -58,7 +31,6 @@ public class EnderecoRequestDTO {
         return logradouro;
     }
 
-
     public String getBairro() {
         return bairro;
     }
@@ -75,15 +47,4 @@ public class EnderecoRequestDTO {
         return ddd;
     }
 
-    @Override
-    public String toString() {
-        return "EnderecoDTO{" +
-                "cep='" + cep + '\'' +
-                ", logradouro='" + logradouro + '\'' +
-                ", bairro='" + bairro + '\'' +
-                ", localidade='" + localidade + '\'' +
-                ", uf='" + uf + '\'' +
-                ", ddd='" + ddd + '\'' +
-                '}';
-    }
 }

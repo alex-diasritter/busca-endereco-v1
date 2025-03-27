@@ -2,7 +2,6 @@ package com.alex.buscacep.infra.service;
 
 import com.alex.buscacep.domain.dtos.response.UserDTO;
 import com.alex.buscacep.domain.models.User;
-import com.alex.buscacep.domain.dtos.request.RegisterRequestDTO;
 import com.alex.buscacep.infra.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
@@ -28,13 +26,13 @@ public class AuthorizationService implements UserDetailsService {
     }
 
     @Transactional
-    public UserDTO register(RegisterRequestDTO registerDTO){
+    public UserDTO register(User user){
 
-        var result = repository.findByUsername(registerDTO.username());
+        var result = repository.findByUsername(user.getUsername());
         if (result != null) return new UserDTO(result.getUsername());
 
-        String encryptedPassword = new BCryptPasswordEncoder().encode(registerDTO.password());
-        User newUser = new User(registerDTO.username(), encryptedPassword, registerDTO.role());
+        String encryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+        User newUser = new User(user.getUsername(), encryptedPassword, user.getRole());
         this.repository.save(newUser);
         return new UserDTO(newUser.getUsername());
     }
@@ -57,6 +55,4 @@ public class AuthorizationService implements UserDetailsService {
         }
         return false;
     }
-
-
 }

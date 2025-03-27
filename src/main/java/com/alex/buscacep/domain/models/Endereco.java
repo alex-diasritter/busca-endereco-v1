@@ -3,7 +3,6 @@ package com.alex.buscacep.domain.models;
 import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -49,20 +48,6 @@ public class Endereco {
         this.ddd = end.getDdd();
     }
 
-    public Endereco(Optional<Endereco> end) {
-        this.id = end.get().getId();
-        this.cep = end.get().getCep();
-        this.logradouro = end.get().getLogradouro();
-        this.bairro = end.get().getBairro();
-        this.localidade = end.get().getLocalidade();
-        this.uf = end.get().getUf();
-        this.ddd = end.get().getDdd();
-    }
-
-    public Endereco(String cep) {
-        this.cep = cep;
-    }
-
     @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL)
     private List<Busca> buscas = new ArrayList<>();
 
@@ -78,50 +63,20 @@ public class Endereco {
         return logradouro;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
-
-
     public String getBairro() {
         return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
     }
 
     public String getLocalidade() {
         return localidade;
     }
 
-    public void setLocalidade(String localidade) {
-        this.localidade = localidade;
-    }
-
     public String getUf() {
         return uf;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
-
     public String getDdd() {
         return ddd;
-    }
-
-    public void setDdd(String ddd) {
-        this.ddd = ddd;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public List<Busca> getBuscas() {
-        return buscas;
     }
 
     // toString para facilitar debug

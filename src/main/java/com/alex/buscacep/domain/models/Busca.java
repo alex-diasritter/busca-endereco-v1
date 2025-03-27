@@ -1,7 +1,6 @@
 package com.alex.buscacep.domain.models;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -20,19 +19,6 @@ public class Busca {
     private Endereco endereco;
 
     public Busca() {
-    }
-
-    public Busca(Long id, LocalDateTime localDateTime) {
-        this.id = id;
-        this.dataHoraBusca = localDateTime;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public LocalDateTime getDataHoraBusca() {

@@ -29,7 +29,8 @@ public class SecurityConfigurations {
                 .sessionManagement(s
                         -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        // Permite acesso ao Swagger e recursos relacionados
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(
                                 "/swagger-ui.html",
                                 "/swagger-ui/**",
@@ -37,8 +38,6 @@ public class SecurityConfigurations {
                                 "/swagger-resources/**",
                                 "/webjars/**"
                         ).permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/buscacep/{cep}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/auth/{username}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/buscacep").hasRole("USER")

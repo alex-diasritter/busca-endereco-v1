@@ -2,10 +2,10 @@ package com.alex.buscacep.domain.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -17,14 +17,13 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "Username não pode ser vazio")
     @Column(name = "username")
     private String username;
 
-    @NotEmpty
+    @NotEmpty(message = "Passwprd não pode ser vazia")
     private String password;
 
-    @NotEmpty
     @Enumerated(EnumType.ORDINAL)
     private UserRole role;
 
@@ -77,27 +76,7 @@ public class User implements UserDetails {
         return true;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public UserRole getRole() {
         return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
     }
 }

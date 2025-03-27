@@ -3,7 +3,6 @@ package com.alex.buscacep.infra.client;
 import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;

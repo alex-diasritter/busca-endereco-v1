@@ -49,7 +49,7 @@ public class EnderecoController {
     })
     @GetMapping(value = "/{cep}")
     public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(
-            @PathVariable @Size(min = 8, max = 8, message = "O CEP deve ter apenas 8 números") String cep)
+            @PathVariable String cep)
             throws IOException, InterruptedException {
 
         return ResponseEntity.ok(service.buscaEndereco(cep));
@@ -78,7 +78,7 @@ public class EnderecoController {
             )
     })
     @GetMapping
-    public ResponseEntity<List<BuscaEnderecoResponseDTO>> buscarEnderecosComDataDb(){
+    public ResponseEntity<List<BuscaEnderecoResponseDTO>> buscarEnderecosComDataNoDb(){
         return ResponseEntity.ok(service.findAll());
     }
 
