@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -58,8 +57,6 @@ public class EnderecoController {
         return ResponseEntity.ok(service.buscaEndereco(cep, usuario));
     }
 
-
-
     @Operation(summary = "Rota responsável por acessar o db e retornar a lista de endereços buscados com a data")
     @ApiResponses(value = {
             @ApiResponse(
@@ -83,7 +80,8 @@ public class EnderecoController {
             )
     })
     @GetMapping
-    public ResponseEntity<List<BuscaEnderecoResponseDTO>> buscarEnderecosComDataNoDb(){
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<List<BuscaEnderecoResponseDTO>> buscaCompletaDB(Authentication authentication){
+        User usuario = (User) authentication.getPrincipal();
+        return ResponseEntity.ok(service.findAll(usuario));
     }
 }

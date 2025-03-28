@@ -22,4 +22,12 @@ public class SalvarBuscaService {
         buscaRepository.save(busca);
         return busca;
     }
+
+    public Busca salvarBusca(User user){
+        var busca = new Busca();
+        busca.setDataHoraBusca(LocalDateTime.now());
+        busca.setUser(user);
+        buscaRepository.save(busca);
+        return busca;
+    }
 }

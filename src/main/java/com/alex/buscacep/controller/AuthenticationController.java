@@ -1,6 +1,5 @@
 package com.alex.buscacep.controller;
 
-import com.alex.buscacep.domain.dtos.request.UserLogin;
 import com.alex.buscacep.domain.dtos.response.UserDTO;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.domain.dtos.response.LoginResponseDTO;
@@ -41,7 +40,7 @@ public class AuthenticationController {
                     content = {
                             @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = UserDTO.class)
+                                    schema = @Schema(implementation = User.class)
                             )
                     }
             ),
@@ -86,9 +85,9 @@ public class AuthenticationController {
             )
     })
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> register(@RequestBody @Valid User data){
+    public ResponseEntity register(@RequestBody @Valid User data){
         var user = authorizationService.register(data);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Rota responsável por listar usuários do sistema")

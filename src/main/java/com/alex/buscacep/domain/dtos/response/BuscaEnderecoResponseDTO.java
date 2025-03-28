@@ -6,19 +6,18 @@ import java.time.LocalDateTime;
 public class BuscaEnderecoResponseDTO {
 
     private LocalDateTime dataHoraBusca;
-    private String userDTO;
+    private String username;
     private String cep;
     private String logradouro;
     private String bairro;
     private String localidade;
     private String uf;
     private String ddd;
+    private String description;
 
-    public BuscaEnderecoResponseDTO() {
-    }
 
     public BuscaEnderecoResponseDTO(Busca busca) {
-        this.userDTO = busca.getUser().getUsername();
+        this.username = busca.getUser().getUsername();
         this.dataHoraBusca = busca.getDataHoraBusca();
         this.cep = busca.getEndereco().getCep();
         this.logradouro = busca.getEndereco().getLogradouro();
@@ -26,6 +25,12 @@ public class BuscaEnderecoResponseDTO {
         this.localidade = busca.getEndereco().getLocalidade();
         this.uf = busca.getEndereco().getUf();
         this.ddd = busca.getEndereco().getDdd();
+    }
+
+    public BuscaEnderecoResponseDTO(LocalDateTime dateTime, String user, String description) {
+        this.dataHoraBusca = dateTime;
+        this.username = user;
+        this.description = description;
     }
 
     public LocalDateTime getDataHoraBusca() {
@@ -56,7 +61,11 @@ public class BuscaEnderecoResponseDTO {
         return ddd;
     }
 
-    public String getUserDTO() {
-        return userDTO;
+    public String getUsername() {
+        return username;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
