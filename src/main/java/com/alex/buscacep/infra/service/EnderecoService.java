@@ -73,7 +73,7 @@ public class EnderecoService {
                         .toList()
 
         );
-        log.info("Junção das lista 'buscas' e 'userBuscas' realizada com sucesso.");
+        log.info("Junção da lista - buscas e - userBuscas realizada com sucesso.");
         return result;
     }
 
