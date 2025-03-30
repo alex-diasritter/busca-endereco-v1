@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,8 @@ public class EnderecoController {
 
     @Autowired
     private EnderecoService service;
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Operation(summary = "Rota responsável por encontrar o endereço do cep informado")
     @ApiResponses(value = {
@@ -49,11 +53,11 @@ public class EnderecoController {
     })
     @GetMapping(value = "/{cep}")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(
-            @PathVariable String cep,
-            Authentication authentication)
+    public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(@PathVariable String cep, Authentication authentication)
             throws IOException, InterruptedException {
+        log.info("Requisição informando o CEP a ser buscado e Token para autenticar o usuário recebida.");
         User usuario = (User) authentication.getPrincipal();
+        log.info("Usuário autenticado com sucesso.");
         return ResponseEntity.ok(service.buscaEndereco(cep, usuario));
     }
 
@@ -81,7 +85,9 @@ public class EnderecoController {
     })
     @GetMapping
     public ResponseEntity<List<BuscaEnderecoResponseDTO>> buscaCompletaDB(Authentication authentication){
+        log.info("Requisição para listar todos os endereços salvos no db com token para autenticar usuário.");
         User usuario = (User) authentication.getPrincipal();
+        log.info("Usuário autenticado com sucesso.");
         return ResponseEntity.ok(service.findAll(usuario));
     }
 }

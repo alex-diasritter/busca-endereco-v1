@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +33,8 @@ public class AuthenticationController {
 
     @Autowired
     private AuthorizationService authorizationService;
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Operation(summary = "Rota responsável pelo login de usuários")
     @ApiResponses(value = {
@@ -56,9 +60,12 @@ public class AuthenticationController {
     })
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid User data){
+        log.info("Requisição de login para usuário: {}", data.getUsername());
         var login = new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword());
         var auth = this.authenticationManager.authenticate(login);
+        log.info("Login bem sucedido e autenticado para o usuário: {}.", data.getUsername());
         var token = tokenService.generateToken((User) auth.getPrincipal());
+        log.info("Token gerado para o usuário: {}", data.getUsername());
         return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
@@ -86,7 +93,9 @@ public class AuthenticationController {
     })
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid User data){
+        log.info("Requisição para registro de usuário.");
         var user = authorizationService.register(data);
+        log.info("Usuário registrado com sucesso.");
         return ResponseEntity.ok().build();
     }
 
@@ -104,6 +113,7 @@ public class AuthenticationController {
             )})
     @GetMapping("/users")
     public ResponseEntity<Page<UserDTO>> list(Pageable pageable){
+        log.info("Requisição para listagem paginada de usuários registrados.");
         return ResponseEntity.ok(authorizationService.findAll(pageable));
     }
 

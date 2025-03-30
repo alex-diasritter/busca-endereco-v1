@@ -1,4 +1,4 @@
-package com.alex.buscacep.infra.exceptions;
+package com.alex.buscacep.controller.exceptions;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
