@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -58,7 +59,12 @@ public class EnderecoController {
         log.info("Requisição informando o CEP a ser buscado e Token para autenticar o usuário recebida.");
         User usuario = (User) authentication.getPrincipal();
         log.info("Usuário autenticado com sucesso.");
-        return ResponseEntity.ok(service.buscaEndereco(cep, usuario));
+        BuscaEnderecoResponseDTO buscaEnderecoResponseDTO = service.buscaEndereco(cep, usuario);
+        if (buscaEnderecoResponseDTO.getCep()==null){
+            log.error("Nenhum endereço encontrado para o cep: {}", cep);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(buscaEnderecoResponseDTO);
     }
 
     @Operation(summary = "Rota responsável por acessar o db e retornar a lista de endereços buscados com a data")

@@ -41,28 +41,27 @@ public class EnderecoService {
     public BuscaEnderecoResponseDTO buscaEndereco(String cep, User usuario) throws IOException, InterruptedException {
         Optional<Endereco> enderecoDb = enderecoRepository.findByCep(cep.substring(0, 5) + "-" + cep.substring(5));
         if (enderecoDb.isPresent()) {
-            log.info("Endereço já registrado no DB, retornando diretamente dos registros locais.");
+            log.info("Endereço encontrado nos registros locais. Não há necessidade de chamar ViaCep.");
             return new BuscaEnderecoResponseDTO(salvarBuscaService.salvarBusca(enderecoDb.get(), usuario));
         }
-        log.info("Endereço não registrado no DB, tentativa de conexão à ViaCep inicializada.");
+        log.info("Endereço não registrado localmente, tentativa de conexão à ViaCep inicializada.");
         var enderecoDTO = conexaoViaCep(cep);
         log.info("Conexão com ViaCep bem sucedida");
         Endereco enderecoNovo = new Endereco(enderecoDTO);
         enderecoRepository.save(enderecoNovo);
-        log.info("EnderecoDTO convertido para Endereco e salvo no db com sucesso.");
+        log.info("EnderecoDTO convertido para Endereco e salvo no banco de dados com sucesso.");
         return new BuscaEnderecoResponseDTO(salvarBuscaService.salvarBusca(enderecoNovo, usuario));
     }
 
     public List<BuscaEnderecoResponseDTO> findAll(User user){
         salvarBuscaService.salvarBusca(user);
-        log.info("Busca por listagem de endereços requisitada por usuário: {} foi salva no DB.");
+        log.info("Busca por listagem de endereços requisitada por usuário: {} foi salva no DB.", user.getUsername());
 
         List<Busca> buscas = buscaRepository.findAll();
-        log.info("Busca por todos os registros de buscas atreladas à um endereço e a um usuário retornada para " +
-                "a variável buscas.");
+        log.info("Busca por todos os registros de buscas atreladas à um endereço e a um usuário realizada.");
 
         List<Object[]> userBuscas = buscaEUserRepository.buscacep();
-        log.info("Busca por todos os registros de buscas feitas por um usuário retornada para a variável: userBuscas");
+        log.info("Busca por todos os registros de buscas feitas por um usuário realizada.");
 
         List<BuscaEnderecoResponseDTO> result = new ArrayList<>();
         result.addAll(buscas.stream().map(BuscaEnderecoResponseDTO::new).toList());

@@ -19,11 +19,11 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Username não pode ser vazio")
+    @NotEmpty(message = "Username não pode ser vazio.")
     @Column(name = "username")
     private String username;
 
-    @NotEmpty(message = "Passwprd não pode ser vazia")
+    @NotEmpty(message = "Password não pode ser vazia.")
     private String password;
 
     @Enumerated(EnumType.ORDINAL)
