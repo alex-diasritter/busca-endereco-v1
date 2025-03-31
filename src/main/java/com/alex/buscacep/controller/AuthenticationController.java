@@ -113,7 +113,7 @@ public class AuthenticationController {
             )})
     @GetMapping("/users")
     public ResponseEntity<Page<UserDTO>> list(Pageable pageable){
-        log.info("Requisição para listagem paginada de usuários registrados.");
+        log.info("Requisição para listagem paginada de usuários do sistema.");
         return ResponseEntity.ok(authorizationService.findAll(pageable));
     }
 

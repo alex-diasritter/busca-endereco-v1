@@ -4,6 +4,8 @@ import com.alex.buscacep.domain.dtos.response.UserDTO;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.infra.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,8 +22,11 @@ public class AuthorizationService implements UserDetailsService {
     @Autowired
     private UserRepository repository;
 
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("loadUserByUsername acionado, buscando por usuário: {}", username);
         return repository.findByUsername(username);
     }
 
@@ -40,6 +45,7 @@ public class AuthorizationService implements UserDetailsService {
     @org.springframework.transaction.annotation.Transactional(readOnly = true)
     public Page<UserDTO> findAll(Pageable pageable){
         Page<User> results = repository.findAll(pageable);
+        log.info("Listagem obtida com sucesso.");
         return results.map(p -> new UserDTO(p.getUsername()));
     }
 
