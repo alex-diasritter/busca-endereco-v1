@@ -3,7 +3,7 @@ package com.alex.buscacep.infra.service;
 import com.alex.buscacep.domain.models.Busca;
 import com.alex.buscacep.domain.models.Endereco;
 import com.alex.buscacep.domain.models.User;
-import com.alex.buscacep.infra.repository.BuscaRepository;
+import com.alex.buscacep.infra.repositories.BuscaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

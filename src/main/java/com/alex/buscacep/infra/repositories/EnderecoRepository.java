@@ -1,4 +1,4 @@
-package com.alex.buscacep.infra.repository;
+package com.alex.buscacep.infra.repositories;
 
 import com.alex.buscacep.domain.models.Endereco;
 import org.springframework.data.jpa.repository.JpaRepository;

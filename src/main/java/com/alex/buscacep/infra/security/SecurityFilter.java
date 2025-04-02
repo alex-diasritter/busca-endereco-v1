@@ -1,6 +1,6 @@
 package com.alex.buscacep.infra.security;
 
-import com.alex.buscacep.infra.repository.UserRepository;
+import com.alex.buscacep.infra.repositories.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
