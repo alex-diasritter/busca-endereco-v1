@@ -61,7 +61,7 @@ public class EnderecoController {
         log.info("Usuário autenticado com sucesso.");
         BuscaEnderecoResponseDTO buscaEnderecoResponseDTO = service.buscaEndereco(cep, usuario);
         if (buscaEnderecoResponseDTO.getCep()==null){
-            log.error("Nenhum endereço encontrado para o cep: {}", cep);
+            log.error("Nenhum endereço encontrado. Retorno 404");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return ResponseEntity.ok(buscaEnderecoResponseDTO);

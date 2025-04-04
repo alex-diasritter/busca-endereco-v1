@@ -9,10 +9,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class CepService {
 
-    private final RestTemplate restTemplate;
-
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+    private final RestTemplate restTemplate;
     public CepService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }

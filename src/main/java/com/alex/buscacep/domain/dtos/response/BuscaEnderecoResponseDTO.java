@@ -1,6 +1,10 @@
 package com.alex.buscacep.domain.dtos.response;
 
+import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import com.alex.buscacep.domain.models.Busca;
+import com.alex.buscacep.domain.models.Endereco;
+import com.alex.buscacep.domain.models.User;
+
 import java.time.LocalDateTime;
 
 public class BuscaEnderecoResponseDTO {
@@ -31,6 +35,9 @@ public class BuscaEnderecoResponseDTO {
         this.dataHoraBusca = dateTime;
         this.username = user;
         this.description = description;
+    }
+
+    public BuscaEnderecoResponseDTO(EnderecoRequestDTO enderecoDTO, User usuario) {
     }
 
     public LocalDateTime getDataHoraBusca() {

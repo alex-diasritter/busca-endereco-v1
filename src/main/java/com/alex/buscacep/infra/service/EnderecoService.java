@@ -46,7 +46,13 @@ public class EnderecoService {
         }
         log.info("Endereço não registrado localmente, tentativa de conexão à ViaCep inicializada.");
         var enderecoDTO = conexaoViaCep(cep);
+        if (enderecoDTO.getCep() == null) {
+            log.info("Conexão com ViaCep bem sucedida");
+            log.info("Endereço não encontrado.");
+            return new BuscaEnderecoResponseDTO(enderecoDTO, usuario);
+        }
         log.info("Conexão com ViaCep bem sucedida");
+        log.info("Endereço encontrado.");
         Endereco enderecoNovo = new Endereco(enderecoDTO);
         enderecoRepository.save(enderecoNovo);
         log.info("EnderecoDTO convertido para Endereco e salvo no banco de dados com sucesso.");

@@ -1,8 +1,7 @@
-package com.alex.buscacep.repositories;
+package com.alex.buscacep.infra.repositories;
 
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.domain.models.UserRole;
-import com.alex.buscacep.infra.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@ActiveProfiles("test")
+@ActiveProfiles("test") //testdb - H2
 public class UserRepositoryTest {
 
     @Autowired
@@ -31,16 +30,9 @@ public class UserRepositoryTest {
         assertThat(foundedUser.getUsername() == "Alex").isTrue();
     }
 
-    @Test
-    void findUserByUsernameCase2(){
-    }
-
-
-
-
     private User createUser(User data){
         User user = new User(data.getUsername(), data.getPassword(), data.getRole());
-        this.entityManager.persist(user);
+        this.entityManager.persist(user); //add usuário no banco de testes
         return user;
     }
 
