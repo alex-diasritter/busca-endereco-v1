@@ -20,22 +20,17 @@ public class SalvarBuscaService {
 
     public Busca salvarBusca(Endereco endereco, User user) {
         log.info("Método salvarBusca chamado.");
-        var busca = new Busca();
-        busca.setDataHoraBusca(LocalDateTime.now());
-        busca.setEndereco(endereco);
-        busca.setUser(user);
+        var busca = new Busca(LocalDateTime.now(), endereco, user);
         buscaRepository.save(busca);
-        log.info("Instância de busca criada e setada corretamente e salva no banco de dados.");
+        log.info("Instância de busca com data/hora, endereço e user criada e setada corretamente e salva no banco de dados.");
         return busca;
     }
 
     public Busca salvarBusca(User user){
         log.info("Método salvarBusca chamado.");
-        var busca = new Busca();
-        busca.setDataHoraBusca(LocalDateTime.now());
-        busca.setUser(user);
+        var busca = new Busca(LocalDateTime.now(), user);
         buscaRepository.save(busca);
-        log.info("Instância de busca criada e setada corretamente e salva no banco de dados.");
+        log.info("Instância de busca com data/hora e user criada e setada corretamente e salva no banco de dados.");
         return busca;
     }
 }

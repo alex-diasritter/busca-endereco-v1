@@ -25,28 +25,27 @@ public class Busca {
     public Busca() {
     }
 
-    public User getUser() {
-        return user;
+    public Busca(LocalDateTime now, Endereco endereco, User user) {
+        this.dataHoraBusca = now;
+        this.endereco = endereco;
+        this.user = user;
     }
 
-    public void setUser(User user) {
+    public Busca(LocalDateTime now, User user) {
+        this.dataHoraBusca = now;
         this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public LocalDateTime getDataHoraBusca() {
         return dataHoraBusca;
     }
 
-    public void setDataHoraBusca(LocalDateTime dataHoraBusca) {
-        this.dataHoraBusca = dataHoraBusca;
-    }
-
     public Endereco getEndereco(){
         return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
     @Override
