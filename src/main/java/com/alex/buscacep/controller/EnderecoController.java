@@ -1,6 +1,8 @@
 package com.alex.buscacep.controller;
 
 import com.alex.buscacep.domain.dtos.response.BuscaEnderecoResponseDTO;
+import com.alex.buscacep.domain.models.Busca;
+import com.alex.buscacep.domain.models.Endereco;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.infra.service.EnderecoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -78,19 +80,10 @@ public class EnderecoController {
                                     schema = @Schema(implementation = BuscaEnderecoResponseDTO.class)
                             )
                     }
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "Não foi possível localizar o endereço referente ao cep informado",
-                    content = {
-                            @Content(
-                                    mediaType = "application/json"
-                            )
-                    }
             )
     })
     @GetMapping
-    public ResponseEntity<List<BuscaEnderecoResponseDTO>> buscaCompletaDB(Authentication authentication){
+    public ResponseEntity<List<Endereco>> enderecosBuscados(Authentication authentication){
         log.info("Requisição para listar todos os endereços salvos no db com token para autenticar usuário.");
         User usuario = (User) authentication.getPrincipal();
         log.info("Usuário autenticado com sucesso.");

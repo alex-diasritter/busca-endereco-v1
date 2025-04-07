@@ -1,5 +1,5 @@
 package com.alex.buscacep.infra.service;
-
+import com.alex.buscacep.domain.dtos.response.BuscaResponseDTO;
 import com.alex.buscacep.domain.models.Busca;
 import com.alex.buscacep.domain.models.Endereco;
 import com.alex.buscacep.domain.models.User;
@@ -9,9 +9,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class SalvarBuscaService {
+public class BuscaService {
 
     @Autowired
     private BuscaRepository buscaRepository;
@@ -32,5 +34,15 @@ public class SalvarBuscaService {
         buscaRepository.save(busca);
         log.info("Instância de busca com data/hora e user criada e setada corretamente e salva no banco de dados.");
         return busca;
+    }
+
+
+    public List<BuscaResponseDTO> findAll(User user) {
+        log.info("Requisição por histórico de buscas requisitada por usuário: {} foi salva no DB.", user.getUsername());
+
+        List<Busca> buscas = buscaRepository.findOnlyBuscas();
+        log.info("Histórico de buscas recebido.");
+
+        return buscas.stream().map(BuscaResponseDTO::new).toList();
     }
 }

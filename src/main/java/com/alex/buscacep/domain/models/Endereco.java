@@ -79,6 +79,10 @@ public class Endereco {
         return ddd;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     // toString para facilitar debug
     @Override
     public String toString() {

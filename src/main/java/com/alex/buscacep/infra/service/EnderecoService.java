@@ -2,7 +2,6 @@ package com.alex.buscacep.infra.service;
 
 import com.alex.buscacep.domain.dtos.response.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
-import com.alex.buscacep.domain.models.Busca;
 import com.alex.buscacep.domain.models.Endereco;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.infra.repositories.BuscaEUserRepository;
@@ -13,8 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,16 +22,10 @@ public class EnderecoService {
     private CepService client;
 
     @Autowired
-    private BuscaRepository buscaRepository;
-
-    @Autowired
-    private BuscaEUserRepository buscaEUserRepository;
-
-    @Autowired
     private EnderecoRepository enderecoRepository;
 
     @Autowired
-    private SalvarBuscaService salvarBuscaService;
+    private BuscaService salvarBuscaService;
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -59,27 +50,14 @@ public class EnderecoService {
         return new BuscaEnderecoResponseDTO(salvarBuscaService.salvarBusca(enderecoNovo, usuario));
     }
 
-    public List<BuscaEnderecoResponseDTO> findAll(User user){
+    public List<Endereco> findAll(User user){
         salvarBuscaService.salvarBusca(user);
         log.info("Busca por listagem de endereços requisitada por usuário: {} foi salva no DB.", user.getUsername());
 
-        List<Busca> buscas = buscaRepository.findAll();
-        log.info("Busca por todos os registros de buscas atreladas à um endereço e a um usuário realizada.");
+        List<Endereco> enderecos = enderecoRepository.findAll();
+        log.info("Busca por todos os endereços realizada.");
 
-        List<Object[]> userBuscas = buscaEUserRepository.buscacep();
-        log.info("Busca por todos os registros de buscas feitas por um usuário realizada.");
-
-        List<BuscaEnderecoResponseDTO> result = new ArrayList<>();
-        result.addAll(buscas.stream().map(BuscaEnderecoResponseDTO::new).toList());
-        result.addAll(
-                userBuscas.stream()
-                        .map(arr -> new BuscaEnderecoResponseDTO((LocalDateTime) arr[1], (String) arr[0],
-                                "BUSCA POR LISTA DE ENDEREÇOS BUSCADOS"))
-                        .toList()
-
-        );
-        log.info("Junção da lista - buscas e - userBuscas realizada com sucesso.");
-        return result;
+        return enderecos;
     }
 
     public EnderecoRequestDTO conexaoViaCep(String cep) throws IOException, InterruptedException {

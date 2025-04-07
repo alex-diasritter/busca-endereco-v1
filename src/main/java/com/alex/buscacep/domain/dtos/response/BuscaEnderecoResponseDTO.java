@@ -17,7 +17,6 @@ public class BuscaEnderecoResponseDTO {
     private String localidade;
     private String uf;
     private String ddd;
-    private String description;
 
 
     public BuscaEnderecoResponseDTO(Busca busca) {
@@ -34,7 +33,6 @@ public class BuscaEnderecoResponseDTO {
     public BuscaEnderecoResponseDTO(LocalDateTime dateTime, String user, String description) {
         this.dataHoraBusca = dateTime;
         this.username = user;
-        this.description = description;
     }
 
     public BuscaEnderecoResponseDTO(EnderecoRequestDTO enderecoDTO, User usuario) {
@@ -72,7 +70,4 @@ public class BuscaEnderecoResponseDTO {
         return username;
     }
 
-    public String getDescription() {
-        return description;
-    }
 }

@@ -43,6 +43,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.GET, "/buscacep").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/buscacep/{cep}").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/auth/users").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/buscas").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
