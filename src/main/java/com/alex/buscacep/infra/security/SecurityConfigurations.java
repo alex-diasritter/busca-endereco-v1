@@ -1,5 +1,7 @@
 package com.alex.buscacep.infra.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +23,8 @@ public class SecurityConfigurations {
 
     @Autowired
     SecurityFilter securityFilter;
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -52,11 +56,13 @@ public class SecurityConfigurations {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
             throws Exception {
+        log.info("authenticationManager acionado.");
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        log.info("passwordEncoder acionado.");
         return new BCryptPasswordEncoder();
     }
 }
