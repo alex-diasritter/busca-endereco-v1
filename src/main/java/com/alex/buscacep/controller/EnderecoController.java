@@ -1,7 +1,5 @@
 package com.alex.buscacep.controller;
-
 import com.alex.buscacep.domain.dtos.response.BuscaEnderecoResponseDTO;
-import com.alex.buscacep.domain.models.Busca;
 import com.alex.buscacep.domain.models.Endereco;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.infra.service.EnderecoService;
@@ -58,7 +56,7 @@ public class EnderecoController {
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(@PathVariable String cep, Authentication authentication)
             throws IOException, InterruptedException {
-        log.info("Requisição informando o CEP a ser buscado e Token para autenticar o usuário recebida.");
+        log.info("Requisição informando o CEP e Token para autenticar o usuário recebida.");
         User usuario = (User) authentication.getPrincipal();
         log.info("Usuário autenticado com sucesso.");
         BuscaEnderecoResponseDTO buscaEnderecoResponseDTO = service.buscaEndereco(cep, usuario);

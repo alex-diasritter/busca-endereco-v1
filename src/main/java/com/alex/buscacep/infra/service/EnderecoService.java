@@ -1,11 +1,8 @@
 package com.alex.buscacep.infra.service;
-
 import com.alex.buscacep.domain.dtos.response.BuscaEnderecoResponseDTO;
 import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import com.alex.buscacep.domain.models.Endereco;
 import com.alex.buscacep.domain.models.User;
-import com.alex.buscacep.infra.repositories.BuscaEUserRepository;
-import com.alex.buscacep.infra.repositories.BuscaRepository;
 import com.alex.buscacep.infra.repositories.EnderecoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +58,7 @@ public class EnderecoService {
     }
 
     public EnderecoRequestDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
-        log.info("Método para buscar endereço acionado, argumento cep: {}", cep);
+        log.info("conexaoViaCep acionado, com argument/cep: {}", cep);
         return client.viaCep(cep);
     }
 }
