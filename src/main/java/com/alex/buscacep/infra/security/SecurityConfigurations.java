@@ -32,6 +32,11 @@ public class SecurityConfigurations {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(s
                         -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+                .headers(headers -> headers
+                        .frameOptions(frameOptions ->
+                                frameOptions.disable())
+                        )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
