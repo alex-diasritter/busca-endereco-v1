@@ -42,6 +42,10 @@ public class SecurityConfigurations {
                                 "/swagger-resources/**",
                                 "/webjars/**"
                         ).permitAll()
+                        .requestMatchers(
+                                "/h2-console/**",
+                                "/h2-console"
+                        ).permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/buscacep/{cep}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/auth/{username}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/buscacep").hasRole("USER")
