@@ -1,0 +1,28 @@
+docker network create buscacep-network
+cria a rede
+
+docker run -d \
+  --name postgres \
+  --network buscacep-network \
+  -e POSTGRES_DB=buscacep \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=123456 \
+  -p 5432:5432 \
+  --health-cmd "pg_isready -U api -d buscacep" \
+  --health-interval 5s \
+  --health-timeout 5s \
+  --health-retries 5 \
+  postgres:14
+sobe o container postgres conectado à rede definida anteriormente
+
+docker exec -it postgres psql -U postgres -d buscacep
+
+docker run -d \
+  --name buscacep \
+  --network buscacep-network \
+  -p 8080:8080 \
+  devritter/buscacep-prod
+sobre o container da api (precisa da imagem)
+
+# Acesse o terminal do container PostgreSQL
+docker exec -it postgres psql -U postgres -d buscacep

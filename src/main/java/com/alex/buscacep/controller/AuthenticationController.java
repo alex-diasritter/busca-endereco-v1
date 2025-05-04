@@ -3,7 +3,7 @@ package com.alex.buscacep.controller;
 import com.alex.buscacep.domain.dtos.response.UserDTO;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.domain.dtos.response.LoginResponseDTO;
-import com.alex.buscacep.infra.security.TokenService;
+import com.alex.buscacep.infra.service.TokenService;
 import com.alex.buscacep.infra.service.AuthorizationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

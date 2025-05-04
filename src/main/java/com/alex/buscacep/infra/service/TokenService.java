@@ -1,4 +1,4 @@
-package com.alex.buscacep.infra.security;
+package com.alex.buscacep.infra.service;
 
 import com.alex.buscacep.domain.models.User;
 import com.auth0.jwt.JWT;
