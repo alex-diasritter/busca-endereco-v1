@@ -58,7 +58,7 @@ public class EnderecoService {
     }
 
     public EnderecoRequestDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
-        log.info("conexaoViaCep acionado, com argument/cep: {}", cep);
-        return client.viaCep(cep);
+        log.info("conexaoViaCep acionado, cep: {}", cep);
+        return client.consultarCep(cep);
     }
 }

@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.FeignClient;
 
 @OpenAPIDefinition(
 		info = @Info(
@@ -27,6 +29,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 		in = SecuritySchemeIn.HEADER
 )
 @SpringBootApplication
+@EnableFeignClients
 public class BuscacepApplication {
 
 	public static void main(String[] args) {

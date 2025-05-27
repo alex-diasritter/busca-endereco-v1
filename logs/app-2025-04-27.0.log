@@ -1,0 +1,204 @@
+2025-04-15 12:13:41 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-04-15 12:13:41 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-04-15 12:17:12 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:12 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:12 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:12 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:12 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:12 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:13 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:13 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:13 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:52 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:17:57 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:39 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-04-15 12:20:40 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-04-15 12:20:50 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:50 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:50 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:50 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:50 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:50 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:51 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:51 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:20:51 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:21:16 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:22:12 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:22:12 [http-nio-9090-exec-4] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-04-15 12:22:13 [http-nio-9090-exec-4] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso.
+2025-04-15 12:23:10 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:23:10 [http-nio-9090-exec-2] INFO  c.a.b.c.AuthenticationController - Requisição de login para usuário: Swagger
+2025-04-15 12:23:10 [http-nio-9090-exec-2] INFO  c.a.b.i.service.AuthorizationService - loadUserByUsername acionado, buscando por usuário: Swagger
+2025-04-15 12:23:10 [http-nio-9090-exec-2] INFO  c.a.b.c.AuthenticationController - Login bem sucedido e autenticado para o usuário: Swagger.
+2025-04-15 12:23:10 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.TokenService - generateToken acionado para o user: Swagger
+2025-04-15 12:23:10 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.TokenService - Instância de genExpirationDate criada.
+2025-04-15 12:23:10 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.TokenService - TokenJWT criado.
+2025-04-15 12:23:10 [http-nio-9090-exec-2] INFO  c.a.b.c.AuthenticationController - Token gerado para o usuário: Swagger
+2025-04-15 12:24:08 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:24:59 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:25:13 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:25:22 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:25:24 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:26:38 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:26:39 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:28:51 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:28:51 [http-nio-9090-exec-2] INFO  c.a.b.c.AuthenticationController - Requisição de login para usuário: Swagger
+2025-04-15 12:28:51 [http-nio-9090-exec-2] INFO  c.a.b.i.service.AuthorizationService - loadUserByUsername acionado, buscando por usuário: Swagger
+2025-04-15 12:28:51 [http-nio-9090-exec-2] INFO  c.a.b.c.AuthenticationController - Login bem sucedido e autenticado para o usuário: Swagger.
+2025-04-15 12:28:51 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.TokenService - generateToken acionado para o user: Swagger
+2025-04-15 12:28:51 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.TokenService - Instância de genExpirationDate criada.
+2025-04-15 12:28:51 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.TokenService - TokenJWT criado.
+2025-04-15 12:28:51 [http-nio-9090-exec-2] INFO  c.a.b.c.AuthenticationController - Token gerado para o usuário: Swagger
+2025-04-15 12:29:19 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:29:20 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:37 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-04-15 12:37:37 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-04-15 12:37:57 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:57 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:57 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:57 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:57 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:57 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:58 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:58 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:37:58 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-15 12:38:16 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJidXNjYWNlcCIsInN1YiI6IlN3YWdnZXIiLCJleHAiOjE3NDQ3MzgxMzF9.wnw2-Khrm-qoVVNOFV0yPUGkXJZAlIWB-i9rlyniCds
+2025-04-15 12:38:16 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.TokenService - validateToken acionado.
+2025-04-15 12:38:16 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - Validando usuário: Swagger, no banco de dados.
+2025-04-15 12:38:17 [http-nio-9090-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para listagem paginada de usuários do sistema.
+2025-04-15 12:38:30 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJidXNjYWNlcCIsInN1YiI6IlN3YWdnZXIiLCJleHAiOjE3NDQ3MzgxMzF9.wnw2-Khrm-qoVVNOFV0yPUGkXJZAlIWB-i9rlyniCds
+2025-04-15 12:38:30 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.TokenService - validateToken acionado.
+2025-04-15 12:38:30 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - Validando usuário: Swagger, no banco de dados.
+2025-04-15 12:38:30 [http-nio-9090-exec-1] INFO  c.a.b.controller.BuscaController - Requisição para listar histórico de buscas registradas no db com token para autenticar usuário.
+2025-04-15 12:38:30 [http-nio-9090-exec-1] INFO  c.a.b.controller.BuscaController - Usuário autenticado com sucesso.
+2025-04-15 12:38:30 [http-nio-9090-exec-1] INFO  c.a.b.infra.service.BuscaService - Requisição por histórico de buscas requisitada por usuário: Swagger foi salva no DB.
+2025-04-15 12:38:30 [http-nio-9090-exec-1] INFO  c.a.b.infra.service.BuscaService - Histórico de buscas recebido.
+2025-04-15 12:39:06 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJidXNjYWNlcCIsInN1YiI6IlN3YWdnZXIiLCJleHAiOjE3NDQ3MzgxMzF9.wnw2-Khrm-qoVVNOFV0yPUGkXJZAlIWB-i9rlyniCds
+2025-04-15 12:39:06 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.TokenService - validateToken acionado.
+2025-04-15 12:39:06 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - Validando usuário: Swagger, no banco de dados.
+2025-04-15 12:39:06 [http-nio-9090-exec-2] INFO  c.a.b.c.AuthenticationController - Requisição para listagem paginada de usuários do sistema.
+2025-04-15 12:39:40 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJidXNjYWNlcCIsInN1YiI6IlN3YWdnZXIiLCJleHAiOjE3NDQ3MzgxMzF9.wnw2-Khrm-qoVVNOFV0yPUGkXJZAlIWB-i9rlyniCds
+2025-04-15 12:39:40 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.TokenService - validateToken acionado.
+2025-04-15 12:39:40 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - Validando usuário: Swagger, no banco de dados.
+2025-04-15 12:39:40 [http-nio-9090-exec-4] INFO  c.a.b.c.AuthenticationController - Requisição para listagem paginada de usuários do sistema.
+2025-04-15 12:39:40 [http-nio-9090-exec-4] INFO  c.a.b.i.service.AuthorizationService - Listagem obtida com sucesso.
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJidXNjYWNlcCIsInN1YiI6IlN3YWdnZXIiLCJleHAiOjE3NDQ3MzgxMzF9.wnw2-Khrm-qoVVNOFV0yPUGkXJZAlIWB-i9rlyniCds
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.TokenService - validateToken acionado.
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - Validando usuário: Swagger, no banco de dados.
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.controller.EnderecoController - Requisição para listar todos os endereços salvos no db com token para autenticar usuário.
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.controller.EnderecoController - Usuário autenticado com sucesso.
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.infra.service.BuscaService - Método salvarBusca chamado.
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.infra.service.BuscaService - Instância de busca com data/hora e user criada e setada corretamente e salva no banco de dados.
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.infra.service.EnderecoService - Busca por listagem de endereços requisitada por usuário: Swagger foi salva no DB.
+2025-04-15 12:40:30 [http-nio-9090-exec-7] INFO  c.a.b.infra.service.EnderecoService - Busca por todos os endereços realizada.
+2025-04-25 13:26:02 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-04-25 13:26:02 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-04-25 13:26:22 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:26:55 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:26:55 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:26:55 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:26:55 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:26:55 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:26:55 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:26:56 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:27:07 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:27:07 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:27:07 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:27:07 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:27:27 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:27:27 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:27:27 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:30:18 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-04-25 13:30:18 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-04-25 13:30:27 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:30:28 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:30:28 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:30:28 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:30:36 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:30:40 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:30:40 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:30:40 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:18 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:19 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:19 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:42 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:42 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:42 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:42 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:42 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:31:42 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:24 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:24 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:24 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:24 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:24 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:25 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:27 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:27 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:27 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:27 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:27 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 13:32:28 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:53:34 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-04-25 16:53:34 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-04-25 16:53:43 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:53:43 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:53:43 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:53:43 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:53:43 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:53:43 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:02 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:02 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:02 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:02 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:02 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:02 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:16 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:16 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:16 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:16 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:16 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:16 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:54:16 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:11 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-04-25 16:58:11 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-04-25 16:58:17 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:17 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:17 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:17 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:17 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:17 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:19 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:19 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:19 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:19 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:19 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:19 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:19 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:20 [http-nio-9090-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:21 [http-nio-9090-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:27 [http-nio-9090-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:27 [http-nio-9090-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-04-25 16:58:27 [http-nio-9090-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
