@@ -42,11 +42,6 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<!-- Recomenda-se não fixar a versão do H2 aqui,
-                 pois o spring-boot-starter-parent já gerencia uma versão compatível.
-                 Se precisar de uma específica, mantenha, mas geralmente não é necessário.
-                 Exemplo: <version>2.2.224</version> (versão gerenciada pelo Boot 3.2.5)
-                 Para este exemplo, vou manter a sua versão especificada. -->
 			<version>2.3.232</version>
 			<scope>runtime</scope>
 		</dependency>
