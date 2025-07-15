@@ -1,8 +1,10 @@
 package com.alex.buscacep.infra.service;
 
+import com.alex.buscacep.domain.dtos.request.UserResgistrationRequestDTO;
 import com.alex.buscacep.domain.dtos.response.UserDTO;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.infra.repositories.UserRepository;
+import com.alex.buscacep.infra.service.exceptions.DuplicatedUserException;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,18 +34,14 @@ public class AuthorizationService implements UserDetailsService {
     }
 
     @Transactional
-    public boolean register(User user) {
-        var result = repository.findByUsername(user.getUsername());
-        if (result == null) {
-            String encryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
-            User newUser = new User(user.getUsername(), encryptedPassword, user.getRole());
-            this.repository.save(newUser);
-            UserDTO userDto = new UserDTO(newUser.getUsername());
-            return true;
-        } else {
-            log.warn("usuário já cadastrado.");
-            return false;
+    public void register(UserResgistrationRequestDTO user) {
+        if (repository.existsByUsername(user.username())) {
+            log.warn("Tentativa de cadastro duplicado: {}", user.username());
+            throw new DuplicatedUserException("Usuário já cadastrado");
         }
+        String encryptedPassword = new BCryptPasswordEncoder().encode(user.password());
+        User newUser = new User(user.username(), encryptedPassword, user.role());
+        this.repository.save(newUser);
     }
 
     @org.springframework.transaction.annotation.Transactional(readOnly = true)

@@ -1,5 +1,6 @@
 package com.alex.buscacep.controller;
 
+import com.alex.buscacep.domain.dtos.request.UserResgistrationRequestDTO;
 import com.alex.buscacep.domain.dtos.response.UserDTO;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.domain.dtos.response.LoginResponseDTO;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -77,7 +79,7 @@ public class AuthenticationController {
                     content = {
                             @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = User.class)
+                                    schema = @Schema(implementation = UserResgistrationRequestDTO.class)
                             )
                     }
             ),
@@ -92,14 +94,11 @@ public class AuthenticationController {
             )
     })
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid User data){
+    public ResponseEntity register(@RequestBody @Valid UserResgistrationRequestDTO data){
         log.info("Requisição para registro de usuário.");
-        var result = authorizationService.register(data);
-        if (result == false ){
-            return ResponseEntity.unprocessableEntity().build();
-        }
-        log.info("Usuário registrado com sucesso: " + data.getUsername());
-        return ResponseEntity.ok().build();
+        authorizationService.register(data);
+        log.info("Usuário registrado com sucesso: {}", data.username());
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Rota responsável por listar usuários do sistema")

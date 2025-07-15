@@ -142,3 +142,145 @@
 2025-07-15 12:13:06 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
 2025-07-15 12:13:06 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
 2025-07-15 12:13:06 [http-nio-8080-exec-1] WARN  c.a.b.i.service.AuthorizationService - usuário já cadastrado.
+2025-07-15 12:36:02 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 12:36:02 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 12:36:07 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:07 [http-nio-8080-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:07 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:07 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:07 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:07 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:08 [http-nio-8080-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:08 [http-nio-8080-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:25 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:25 [http-nio-8080-exec-9] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 12:36:25 [http-nio-8080-exec-9] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 12:36:29 [http-nio-8080-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 12:36:29 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 12:36:29 [http-nio-8080-exec-10] WARN  c.a.b.i.service.AuthorizationService - usuário já cadastrado.
+2025-07-15 13:06:08 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 13:06:08 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 13:06:23 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:24 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:24 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:24 [http-nio-8080-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:24 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:24 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:24 [http-nio-8080-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:24 [http-nio-8080-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:24 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:32 [http-nio-8080-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:32 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:06:32 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 13:06:35 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:06:35 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:06:35 [http-nio-8080-exec-1] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:07:23 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 13:07:23 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 13:07:28 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:28 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:28 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:28 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:28 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:28 [http-nio-8080-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:28 [http-nio-8080-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:28 [http-nio-8080-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:28 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:34 [http-nio-8080-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:34 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:07:34 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 13:07:35 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:07:35 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:07:35 [http-nio-8080-exec-1] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:11:36 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 13:11:36 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 13:11:43 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:43 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:43 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:43 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:43 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:43 [http-nio-8080-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:44 [http-nio-8080-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:44 [http-nio-8080-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:44 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:50 [http-nio-8080-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:50 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:11:50 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 13:11:53 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:11:53 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:11:53 [http-nio-8080-exec-1] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:15:09 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 13:15:09 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 13:15:23 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:23 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:23 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:23 [http-nio-8080-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:23 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:23 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:23 [http-nio-8080-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:23 [http-nio-8080-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:23 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:29 [http-nio-8080-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:29 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:15:30 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 13:15:31 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:15:31 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:15:31 [http-nio-8080-exec-1] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:16:40 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 13:16:40 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 13:16:46 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:46 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:46 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:46 [http-nio-8080-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:46 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:46 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:46 [http-nio-8080-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:46 [http-nio-8080-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:47 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:52 [http-nio-8080-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:52 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:16:52 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 13:16:54 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:16:54 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:16:54 [http-nio-8080-exec-1] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:19:47 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 13:19:47 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 13:19:53 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:19:54 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:19:54 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:19:54 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:19:54 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:19:54 [http-nio-8080-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:19:54 [http-nio-8080-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:19:54 [http-nio-8080-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:19:54 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:20:00 [http-nio-8080-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:20:00 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:20:00 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 13:20:01 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:20:01 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:20:01 [http-nio-8080-exec-1] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:21:26 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 13:21:27 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 13:21:34 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:21:34 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:21:34 [http-nio-8080-exec-1] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 13:21:39 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:21:39 [http-nio-8080-exec-2] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:21:39 [http-nio-8080-exec-2] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:22:43 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-15 13:22:43 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-15 13:23:50 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:24:24 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:24:47 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:24:48 [http-nio-8080-exec-4] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:24:48 [http-nio-8080-exec-4] INFO  c.a.b.c.AuthenticationController - Usuário registrado com sucesso: string
+2025-07-15 13:24:55 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:24:55 [http-nio-8080-exec-5] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:24:55 [http-nio-8080-exec-5] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:26:52 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:26:52 [http-nio-8080-exec-9] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:26:52 [http-nio-8080-exec-9] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string
+2025-07-15 13:27:21 [http-nio-8080-exec-10] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-15 13:27:21 [http-nio-8080-exec-10] INFO  c.a.b.c.AuthenticationController - Requisição para registro de usuário.
+2025-07-15 13:27:21 [http-nio-8080-exec-10] WARN  c.a.b.i.service.AuthorizationService - Tentativa de cadastro duplicado: string

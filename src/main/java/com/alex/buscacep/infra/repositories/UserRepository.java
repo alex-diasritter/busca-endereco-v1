@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    boolean existsByUsername(String username);
+
     UserDetails findByUsername(String username);
 
     List<Busca> findByUsername(User username); // Busca todas as buscas de um usuário

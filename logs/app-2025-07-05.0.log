@@ -1,0 +1,11 @@
+2025-07-05 20:33:44 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-05 20:33:44 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-05 20:34:42 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-05 20:34:42 [http-nio-8080-exec-2] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-05 20:34:42 [http-nio-8080-exec-4] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-05 20:34:42 [http-nio-8080-exec-3] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-05 20:34:42 [http-nio-8080-exec-5] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-05 20:34:42 [http-nio-8080-exec-6] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-05 20:34:42 [http-nio-8080-exec-7] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-05 20:34:42 [http-nio-8080-exec-8] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null
+2025-07-05 20:34:42 [http-nio-8080-exec-9] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: null

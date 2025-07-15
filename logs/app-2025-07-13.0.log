@@ -1,0 +1,14 @@
+2025-07-13 12:57:27 [main] INFO  c.a.b.i.r.UserRepositoryTest - Starting UserRepositoryTest using Java 21.0.7 with PID 9850 (started by alex_ritter in /home/alex_ritter/IdeaProjects/BuscaEndereco)
+2025-07-13 12:57:27 [main] INFO  c.a.b.i.r.UserRepositoryTest - The following 1 profile is active: "test"
+2025-07-13 12:57:33 [main] INFO  c.a.b.i.r.UserRepositoryTest - Started UserRepositoryTest in 7.588 seconds (process running for 10.104)
+2025-07-13 13:01:21 [main] INFO  c.a.b.i.r.UserRepositoryTest - Starting UserRepositoryTest using Java 21.0.7 with PID 10079 (started by alex_ritter in /home/alex_ritter/IdeaProjects/BuscaEndereco)
+2025-07-13 13:01:21 [main] INFO  c.a.b.i.r.UserRepositoryTest - The following 1 profile is active: "test"
+2025-07-13 13:01:26 [main] INFO  c.a.b.i.r.UserRepositoryTest - Started UserRepositoryTest in 6.225 seconds (process running for 8.595)
+2025-07-13 13:02:05 [main] INFO  c.a.b.i.r.UserRepositoryTest - Starting UserRepositoryTest using Java 21.0.7 with PID 10185 (started by alex_ritter in /home/alex_ritter/IdeaProjects/BuscaEndereco)
+2025-07-13 13:02:05 [main] INFO  c.a.b.i.r.UserRepositoryTest - The following 1 profile is active: "test"
+2025-07-13 13:02:11 [main] INFO  c.a.b.i.r.UserRepositoryTest - Started UserRepositoryTest in 6.65 seconds (process running for 8.99)
+2025-07-13 22:11:41 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - authenticationManager acionado.
+2025-07-13 22:11:42 [main] INFO  c.a.b.i.s.SecurityConfigurations$$SpringCGLIB$$0 - passwordEncoder acionado.
+2025-07-13 22:12:25 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - doFilterInternal acionado, requisição recebida com o token: Basic bXljbGllbnRpZDpteWNsaWVudHNlY3JldA==
+2025-07-13 22:12:25 [http-nio-8080-exec-1] INFO  c.a.b.infra.service.TokenService - validateToken acionado.
+2025-07-13 22:12:25 [http-nio-8080-exec-1] INFO  c.a.b.infra.security.SecurityFilter - Validando usuário: , no banco de dados.
