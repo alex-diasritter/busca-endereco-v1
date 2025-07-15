@@ -10,7 +10,7 @@ class CepServiceTest {
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Test
-    @DisplayName("Should get endereço successfully from ViaCep")
+    @DisplayName("Should get endereco successfully from ViaCep")
     void getViaCepCase1() {
         String url = "https://viacep.com.br/ws/24900435/json/";
         var endereco = (restTemplate.getForObject(url, EnderecoRequestDTO.class));

@@ -1,5 +1,4 @@
 package com.alex.buscacep.infra.repositories;
-
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.domain.models.UserRole;
 import jakarta.persistence.EntityManager;
@@ -24,10 +23,18 @@ public class UserRepositoryTest {
     @Test
     @DisplayName("Should get user successfully from testdb")
     void findUserByUsernameCase1(){
-        User data = new User("Alex", "senha", UserRole.ADMIN);
-        this.createUser(data);
-        UserDetails foundedUser = this.userRepository.findByUsername(data.getUsername());
+        User user = new User("Alex", "senha", UserRole.ADMIN);
+        this.createUser(user);
+        UserDetails foundedUser = this.userRepository.findByUsername(user.getUsername());
         assertThat(foundedUser.getUsername() == "Alex").isTrue();
+    }
+
+    @Test
+    void findUserByUsernameCase2(){
+        User user = new User("Alex", "senha", UserRole.ADMIN);
+        this.createUser(user);
+        UserDetails foundedUser = this.userRepository.findByUsername(user.getUsername());
+        assertThat(foundedUser.getUsername() == "Jaque").isFalse();
     }
 
     private User createUser(User data){
