@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthorizationService implements UserDetailsService {
 
@@ -30,15 +32,18 @@ public class AuthorizationService implements UserDetailsService {
     }
 
     @Transactional
-    public UserDTO register(User user){
-
+    public boolean register(User user) {
         var result = repository.findByUsername(user.getUsername());
-        if (result != null) return new UserDTO(result.getUsername());
-
-        String encryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
-        User newUser = new User(user.getUsername(), encryptedPassword, user.getRole());
-        this.repository.save(newUser);
-        return new UserDTO(newUser.getUsername());
+        if (result == null) {
+            String encryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+            User newUser = new User(user.getUsername(), encryptedPassword, user.getRole());
+            this.repository.save(newUser);
+            UserDTO userDto = new UserDTO(newUser.getUsername());
+            return true;
+        } else {
+            log.warn("usuário já cadastrado.");
+            return false;
+        }
     }
 
     @org.springframework.transaction.annotation.Transactional(readOnly = true)

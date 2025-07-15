@@ -94,8 +94,11 @@ public class AuthenticationController {
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid User data){
         log.info("Requisição para registro de usuário.");
-        var user = authorizationService.register(data);
-        log.info("Usuário registrado com sucesso.");
+        var result = authorizationService.register(data);
+        if (result == false ){
+            return ResponseEntity.unprocessableEntity().build();
+        }
+        log.info("Usuário registrado com sucesso: " + data.getUsername());
         return ResponseEntity.ok().build();
     }
 
