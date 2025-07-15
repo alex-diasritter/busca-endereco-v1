@@ -2,11 +2,13 @@ package com.alex.buscacep.domain.dtos.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EnderecoRequestDTO {
 
     @NotBlank(message = "O CEP é obrigatório")
+    @Size(min = 8, max = 8)
     private String cep;
     private String logradouro;
     private String bairro;

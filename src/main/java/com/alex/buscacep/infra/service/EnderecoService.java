@@ -4,6 +4,7 @@ import com.alex.buscacep.domain.dtos.request.EnderecoRequestDTO;
 import com.alex.buscacep.domain.models.Endereco;
 import com.alex.buscacep.domain.models.User;
 import com.alex.buscacep.infra.repositories.EnderecoRepository;
+import com.alex.buscacep.infra.service.exceptions.CepNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class EnderecoService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    public BuscaEnderecoResponseDTO buscaEndereco(String cep, User usuario) throws IOException, InterruptedException {
+    public BuscaEnderecoResponseDTO buscaEndereco(String cep, User usuario) {
         Optional<Endereco> enderecoDb = enderecoRepository.findByCep(cep.substring(0, 5) + "-" + cep.substring(5));
         if (enderecoDb.isPresent()) {
             log.info("Endereço encontrado nos registros locais. Não há necessidade de chamar ViaCep.");
@@ -37,7 +38,7 @@ public class EnderecoService {
         if (enderecoDTO.getCep() == null) {
             log.info("Conexão com ViaCep bem sucedida");
             log.info("Endereço não encontrado.");
-            return new BuscaEnderecoResponseDTO(enderecoDTO, usuario);
+            throw new CepNotFoundException("Nenhum endereco para o cep: " + cep);
         }
         log.info("Conexão com ViaCep bem sucedida");
         log.info("Endereço encontrado.");
@@ -57,8 +58,7 @@ public class EnderecoService {
         return enderecos;
     }
 
-    public EnderecoRequestDTO conexaoViaCep(String cep) throws IOException, InterruptedException {
-        log.info("conexaoViaCep acionado, cep: {}", cep);
+    public EnderecoRequestDTO conexaoViaCep(String cep) {
         return client.consultarCep(cep);
     }
 }

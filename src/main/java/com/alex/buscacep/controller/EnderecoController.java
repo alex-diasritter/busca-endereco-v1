@@ -54,16 +54,11 @@ public class EnderecoController {
     })
     @GetMapping(value = "/{cep}")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(@PathVariable String cep, Authentication authentication)
-            throws IOException, InterruptedException {
+    public ResponseEntity<BuscaEnderecoResponseDTO> buscarEndereco(@PathVariable String cep, Authentication authentication) {
         log.info("Requisição informando o CEP e Token para autenticar o usuário recebida.");
         User usuario = (User) authentication.getPrincipal();
         log.info("Usuário autenticado com sucesso.");
         BuscaEnderecoResponseDTO buscaEnderecoResponseDTO = service.buscaEndereco(cep, usuario);
-        if (buscaEnderecoResponseDTO.getCep()==null){
-            log.error("Nenhum endereço encontrado. Retorno 404");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
         return ResponseEntity.ok(buscaEnderecoResponseDTO);
     }
 
