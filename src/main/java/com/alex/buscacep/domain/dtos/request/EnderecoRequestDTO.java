@@ -16,6 +16,9 @@ public class EnderecoRequestDTO {
     private String uf;
     private String ddd;
 
+    public EnderecoRequestDTO() {
+    }
+
     public EnderecoRequestDTO(String cep, String logradouro, String bairro, String localidade, String uf, String ddd) {
         this.cep = cep;
         this.logradouro = logradouro;
@@ -49,4 +52,7 @@ public class EnderecoRequestDTO {
         return ddd;
     }
 
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
 }
