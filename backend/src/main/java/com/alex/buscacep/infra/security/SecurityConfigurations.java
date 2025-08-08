@@ -1,5 +1,13 @@
 package com.alex.buscacep.infra.security;
 
+// Imports que estavam faltando
+import org.springframework.security.config.Customizer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import java.util.Arrays;
+
+// Imports que você já tinha
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +30,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfigurations {
 
     @Autowired
-    SecurityFilter securityFilter;
+    private SecurityFilter securityFilter;
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -30,36 +38,48 @@ public class SecurityConfigurations {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(s
-                        -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
-                .headers(headers -> headers
-                        .frameOptions(frameOptions ->
-                                frameOptions.disable())
-                        )
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .cors(Customizer.withDefaults()) // Habilita a configuração de CORS definida no bean abaixo
                 .authorizeHttpRequests(authorize -> authorize
+                        // Endpoints públicos
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        // Endpoints do Swagger
                         .requestMatchers(
                                 "/swagger-ui.html",
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**",
-                                "/swagger-resources/**",
-                                "/webjars/**"
+                                "/v3/api-docs/**"
                         ).permitAll()
-                        .requestMatchers(
-                                "/h2-console/**",
-                                "/h2-console"
-                        ).permitAll()
+                        // Endpoints do H2 Console
+                        .requestMatchers("/h2-console/**").permitAll()
+                        // Permissões de ADMIN
                         .requestMatchers(HttpMethod.DELETE, "/buscacep/{cep}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/auth/{username}").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/buscacep").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET, "/buscacep/{cep}").hasRole("USER")
                         .requestMatchers(HttpMethod.GET, "/auth/users").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/buscas").hasRole("ADMIN")
-                        .anyRequest().authenticated())
+                        // Permissões de USER (exemplo, ajuste se necessário)
+                        .requestMatchers(HttpMethod.GET, "/buscacep", "/buscacep/{cep}").hasRole("USER")
+                        // Todas as outras requisições precisam de autenticação
+                        .anyRequest().authenticated()
+                )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        // Permite requisições da origem do seu frontend
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+        // Permite os métodos HTTP que seu frontend usará
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        // Permite todos os cabeçalhos
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        // Aplica esta configuração a todos os endpoints da sua API
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
     @Bean
@@ -68,6 +88,8 @@ public class SecurityConfigurations {
         log.info("authenticationManager acionado.");
         return authenticationConfiguration.getAuthenticationManager();
     }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

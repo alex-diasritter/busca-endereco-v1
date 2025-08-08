@@ -20,7 +20,7 @@ public class User implements UserDetails {
     private Long id;
 
     @NotEmpty(message = "Username não pode ser vazio.")
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
     @NotEmpty(message = "Password não pode ser vazia.")
