@@ -8,7 +8,7 @@ docker run -d \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=123456 \
   -p 5432:5432 \
-  --health-cmd "pg_isready -U api -d buscacep" \
+  --health-cmd "pg_isready -U postgres -d buscacep" \
   --health-interval 5s \
   --health-timeout 5s \
   --health-retries 5 \
