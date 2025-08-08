@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # Serviço do Banco de Dados
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    environment:
+      POSTGRES_DB: buscacep
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+    networks:
+      - busca-endereco-net
+
+  # Serviço do Backend (Spring Boot)
+  backend:
+    # A diretiva 'build' constrói a imagem a partir do Dockerfile na pasta ./backend
+    build: ./backend
+    container_name: backend
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - busca-endereco-net
+    environment:
+      # Passa a senha do banco como variável de ambiente
+      SPRING_DATASOURCE_PASSWORD: 123456
+      # Você pode adicionar outras variáveis de ambiente aqui
+      # JWT_SECRET: "seu_segredo_super_secreto"
+
+  # Serviço do Frontend (NGINX)
+  frontend:
+    # A diretiva 'build' constrói a imagem a partir do Dockerfile na pasta ./frontend
+    build: ./frontend
+    container_name: frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    networks:
+      - busca-endereco-net
+
+# Rede que permite a comunicação entre os contêineres
+networks:
+  busca-endereco-net:
+    driver: bridge

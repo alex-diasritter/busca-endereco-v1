@@ -60,7 +60,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                 log.info("Usuário {} autenticado com sucesso.", username);
             }
         }
-        
+
         filterChain.doFilter(request, response);
     }
 
