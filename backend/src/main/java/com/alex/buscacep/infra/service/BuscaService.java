@@ -38,11 +38,14 @@ public class BuscaService {
 
 
     public List<BuscaResponseDTO> findAll(User user) {
-        log.info("Requisição por histórico de buscas requisitada por usuário: {} foi salva no DB.", user.getUsername());
+        log.info("Requisição por histórico de buscas requisitada por usuário: {}", user.getUsername());
 
-        List<Busca> buscas = buscaRepository.findOnlyBuscas();
-        log.info("Histórico de buscas recebido.");
+        // Busca apenas as buscas do usuário autenticado
+        List<Busca> buscas = buscaRepository.findByUser(user);
+        log.info("Histórico de {} buscas encontrado para o usuário: {}", buscas.size(), user.getUsername());
 
-        return buscas.stream().map(BuscaResponseDTO::new).toList();
+        return buscas.stream()
+                .map(BuscaResponseDTO::new)
+                .toList();
     }
 }

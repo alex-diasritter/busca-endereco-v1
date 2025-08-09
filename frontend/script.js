@@ -38,9 +38,11 @@ async function fazerLogin(event) {
 // Função para chamadas autenticadas
 async function authFetch(url, options = {}) {
   const token = localStorage.getItem("token");
+
+  // Verificar se o token existe
   if (!token) {
     logout();
-    throw new Error("Sessão expirada");
+    throw new Error("Token não encontrado, faça login.");
   }
 
   const headers = {
@@ -48,24 +50,39 @@ async function authFetch(url, options = {}) {
     "Authorization": `Bearer ${token}`
   };
 
-  if (options.body && typeof options.body === 'object') {
+  // Não forçar Content-Type para requisições sem corpo
+  if (options.body && typeof options.body === 'object' && !headers["Content-Type"]) {
     headers["Content-Type"] = "application/json";
     options.body = JSON.stringify(options.body);
   }
 
-  const response = await fetch(url, { ...options, headers });
+  try {
+    const response = await fetch(url, { ...options, headers });
 
-  if (!response.ok) {
-    if (response.status === 401 || response.status === 403) {
+    if (response.status === 401) {
+      // Token expirado ou inválido
       logout();
-      alert("Sessão expirada, faça login novamente.");
+      throw new Error("Sessão expirada, faça login novamente.");
     }
 
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.message || `Erro ${response.status}`);
-  }
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `Erro ${response.status}: ${response.statusText}`);
+    }
 
-  return response.json();
+    return response.json();
+  } catch (err) {
+    if (err.message.includes("Sessão expirada")) {
+      // Já tratado pelo logout, não precisa fazer nada extra
+      throw err;
+    }
+
+    if (err.message.includes("Failed to fetch")) {
+      throw new Error("Erro de conexão com o servidor");
+    }
+
+    throw err;
+  }
 }
 
 // Logout
@@ -78,30 +95,86 @@ function logout() {
 async function buscarEndereco() {
   const cepInput = document.getElementById("cepInput");
   const resultadoDiv = document.getElementById("resultadoBusca");
+  
+  if (!cepInput || !resultadoDiv) {
+    console.error("Elementos necessários não encontrados.");
+    return;
+  }
+  
   const cep = cepInput.value.replace(/\D/g, '');
 
+  // Validação básica do CEP
   if (cep.length !== 8) {
-    resultadoDiv.textContent = "CEP inválido. Digite 8 dígitos.";
-    resultadoDiv.style.color = "red";
+    resultadoDiv.innerHTML = `
+      <div class="alert alert-warning">
+        <strong>CEP inválido!</strong> O CEP deve conter exatamente 8 dígitos.
+      </div>
+    `;
     return;
   }
 
   try {
-    resultadoDiv.innerHTML = '<div class="loader"></div>';
-    const data = await authFetch(`${API_URL}/buscacep/${cep}`);
-
+    // Mostrar loader
     resultadoDiv.innerHTML = `
-      <p><strong>CEP:</strong> ${data.cep || "-"}</p>
-      <p><strong>Logradouro:</strong> ${data.logradouro || "-"}</p>
-      <p><strong>Bairro:</strong> ${data.bairro || "-"}</p>
-      <p><strong>Cidade:</strong> ${data.localidade || "-"}</p>
-      <p><strong>UF:</strong> ${data.uf || "-"}</p>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Buscando...</span>
+        </div>
+        <span class="ms-2">Buscando endereço...</span>
+      </div>
     `;
-    resultadoDiv.style.color = "black";
+    
+    // Fazer a requisição
+    const data = await authFetch(`${API_URL}/buscacep/${cep}`);
+    
+    // Verificar se o CEP foi encontrado
+    if (data.erro) {
+      throw new Error("CEP não encontrado");
+    }
+
+    // Exibir os dados formatados
+    resultadoDiv.innerHTML = `
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Endereço encontrado</h5>
+        </div>
+        <div class="card-body">
+          <p class="mb-2"><strong class="text-primary">CEP:</strong> ${data.cep || "-"}</p>
+          <p class="mb-2"><strong class="text-primary">Logradouro:</strong> ${data.logradouro || "-"}</p>
+          <p class="mb-2"><strong class="text-primary">Bairro:</strong> ${data.bairro || "-"}</p>
+          <p class="mb-2"><strong class="text-primary">Cidade/UF:</strong> ${data.localidade || "-"}/${data.uf || "-"}</p>
+          ${data.complemento ? `<p class="mb-0"><strong class="text-primary">Complemento:</strong> ${data.complemento}</p>` : ''}
+        </div>
+      </div>
+    `;
+    
+    // Limpar o campo de entrada
     cepInput.value = "";
+    
+    // Recarregar o histórico de buscas
+    await carregarHistorico();
+    
   } catch (err) {
-    resultadoDiv.textContent = "Erro ao buscar endereço: " + err.message;
-    resultadoDiv.style.color = "red";
+    console.error("Erro ao buscar endereço:", err);
+    
+    let errorMessage = "Erro ao buscar endereço";
+    if (err.message.includes("404")) {
+      errorMessage = "CEP não encontrado. Verifique o número e tente novamente.";
+    } else if (err.message.includes("network")) {
+      errorMessage = "Não foi possível conectar ao servidor. Verifique sua conexão com a internet.";
+    } else if (err.message.includes("401") || err.message.includes("403")) {
+      errorMessage = "Sessão expirada. Por favor, faça login novamente.";
+      logout();
+    }
+    
+    resultadoDiv.innerHTML = `
+      <div class="alert alert-danger">
+        <strong>Erro!</strong> ${errorMessage}
+      </div>
+    `;
+  } finally {
+    // Garantir que o campo de CEP mantenha o foco para uma nova busca
+    cepInput.focus();
   }
 }
 
@@ -115,27 +188,42 @@ async function carregarHistorico() {
     const dados = await authFetch(`${API_URL}/buscas`);
     tableBody.innerHTML = "";
 
+    if (dados.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="2">Nenhuma busca encontrada</td></tr>';
+      return;
+    }
+
     dados.forEach(item => {
       const tr = document.createElement("tr");
-      const dataFormatada = new Date(item.data).toLocaleString();
-      tr.innerHTML = `<td>${dataFormatada}</td><td>${item.endereco || "-"}</td>`;
+      // Usando dataHoraBusca em vez de data
+      const dataHora = item.dataHoraBusca ? new Date(item.dataHoraBusca) : null;
+      const dataFormatada = dataHora ? dataHora.toLocaleString('pt-BR') : 'Data não disponível';
+      tr.innerHTML = `<td>${dataFormatada}</td><td>${item.usersame || "-"}</td>`;
       tableBody.appendChild(tr);
     });
   } catch (err) {
-    tableBody.innerHTML = '<tr><td colspan="2">Erro ao carregar histórico</td></tr>';
-    console.error("Erro ao carregar histórico:", err);
+    console.error("Erro detalhado ao carregar histórico:", err);
+    tableBody.innerHTML = '<tr><td colspan="2">Erro ao carregar histórico. Tente novamente.</td></tr>';
   }
 }
 
 // Carregar endereços salvos
 async function carregarEnderecos() {
   const tableBody = document.querySelector("#enderecos-table tbody");
+  if (!tableBody) return; // Se não encontrar a tabela, sai da função
+  
   try {
     // Mostrar loader
-    tableBody.innerHTML = '<tr><td colspan="5"><div class="loader"></div></td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="5"><div class="loader">Carregando endereços...</div></td></tr>';
 
     const dados = await authFetch(`${API_URL}/buscacep`);
-    tableBody.innerHTML = "";
+    
+    if (!dados || dados.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="5">Nenhum endereço encontrado</td></tr>';
+      return;
+    }
+
+    tableBody.innerHTML = ""; // Limpa o loader
 
     dados.forEach(endereco => {
       const tr = document.createElement("tr");
@@ -149,29 +237,55 @@ async function carregarEnderecos() {
       tableBody.appendChild(tr);
     });
   } catch (err) {
-    tableBody.innerHTML = '<tr><td colspan="5">Erro ao carregar endereços</td></tr>';
-    console.error("Erro ao carregar endereços:", err);
+    console.error("Erro detalhado ao carregar endereços:", err);
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="5" class="error-message">
+          Erro ao carregar endereços. ${err.message || 'Tente novamente mais tarde.'}
+        </td>
+      </tr>`;
   }
 }
 
 // Carregar usuários (somente admin)
 async function carregarUsuarios() {
   const tableBody = document.querySelector("#usuarios-table tbody");
+  if (!tableBody) return; // Se não encontrar a tabela, sai da função
+
   try {
     // Mostrar loader
-    tableBody.innerHTML = '<tr><td colspan="2"><div class="loader"></div></td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="3"><div class="loader">Carregando usuários...</div></td></tr>';
 
-    const dados = await authFetch(`${API_URL}/auth/users`);
-    tableBody.innerHTML = "";
+    const dados = await authFetch(`${API_URL}/users`);
+    
+    if (!dados || dados.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="3">Nenhum usuário cadastrado</td></tr>';
+      return;
+    }
 
-    dados.forEach(user => {
+    tableBody.innerHTML = ""; // Limpa o loader
+
+    dados.forEach(usuario => {
       const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${user.username}</td><td>${user.role}</td>`;
+      tr.innerHTML = `
+        <td>${usuario.id || "-"}</td>
+        <td>${usuario.username || "-"}</td>
+        <td>${usuario.role || "-"}</td>
+      `;
       tableBody.appendChild(tr);
     });
   } catch (err) {
-    tableBody.innerHTML = '<tr><td colspan="2">Erro ao carregar usuários</td></tr>';
-    console.error("Erro ao carregar usuários:", err);
+    console.error("Erro detalhado ao carregar usuários:", err);
+    const errorMessage = err.status === 403 
+      ? 'Acesso negado. Apenas administradores podem visualizar esta lista.'
+      : `Erro ao carregar usuários. ${err.message || 'Tente novamente mais tarde.'}`;
+      
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="3" class="error-message">
+          ${errorMessage}
+        </td>
+      </tr>`;
   }
 }
 
@@ -206,21 +320,49 @@ async function cadastrarUsuario(event) {
 
 // Inicialização da dashboard
 async function inicializarDashboard() {
-  // Configurar logout
-  document.getElementById("logoutBtn").onclick = logout;
+  try {
+    // Verificar autenticação
+    if (!localStorage.getItem("token")) {
+      window.location.href = "index.html";
+      return;
+    }
 
-  // Verificar autenticação
-  if (!localStorage.getItem("token")) {
-    window.location.href = "index.html";
-    return;
+    // Configurar logout
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.onclick = logout;
+    }
+
+    // Configurar eventos apenas se os elementos existirem
+    const buscarBtn = document.getElementById("buscarBtn");
+    if (buscarBtn) buscarBtn.onclick = buscarEndereco;
+    
+    const carregarHistoricoBtn = document.getElementById("carregarHistoricoBtn");
+    if (carregarHistoricoBtn) carregarHistoricoBtn.onclick = carregarHistorico;
+    
+    const carregarEnderecosBtn = document.getElementById("carregarEnderecosBtn");
+    if (carregarEnderecosBtn) carregarEnderecosBtn.onclick = carregarEnderecos;
+    
+    const carregarUsuariosBtn = document.getElementById("carregarUsuariosBtn");
+    if (carregarUsuariosBtn) carregarUsuariosBtn.onclick = carregarUsuarios;
+    
+    const cadastroForm = document.getElementById("cadastro-form");
+    if (cadastroForm) cadastroForm.onsubmit = cadastrarUsuario;
+    
+    // Carregar dados iniciais se estiver na página correta
+    const currentPage = window.location.pathname.split('/').pop();
+    if (currentPage === 'dashboard.html') {
+      // Carregar histórico por padrão
+      await carregarHistorico();
+    }
+  } catch (error) {
+    console.error("Erro ao inicializar o dashboard:", error);
+    // Exibir mensagem de erro amigável para o usuário
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'alert alert-danger';
+    errorDiv.textContent = 'Ocorreu um erro ao carregar o dashboard. Por favor, tente novamente.';
+    document.body.prepend(errorDiv);
   }
-
-  // Configurar eventos
-  document.getElementById("buscarBtn").onclick = buscarEndereco;
-  document.getElementById("carregarHistoricoBtn").onclick = carregarHistorico;
-  document.getElementById("carregarEnderecosBtn").onclick = carregarEnderecos;
-  document.getElementById("carregarUsuariosBtn").onclick = carregarUsuarios;
-  document.getElementById("cadastro-form").onsubmit = cadastrarUsuario;
 }
 
 // Inicializar após carregamento do DOM

@@ -56,8 +56,8 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.DELETE, "/buscacep/{cep}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/auth/{username}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/auth/users").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/buscas").hasRole("ADMIN")
-                        // Permissões de USER (exemplo, ajuste se necessário)
+                        // Permissões de USER
+                        .requestMatchers(HttpMethod.GET, "/buscas").hasAnyRole("USER", "ADMIN")
                         .requestMatchers(HttpMethod.GET, "/buscacep", "/buscacep/{cep}").hasRole("USER")
                         // Todas as outras requisições precisam de autenticação
                         .anyRequest().authenticated()

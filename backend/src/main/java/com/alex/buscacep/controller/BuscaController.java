@@ -27,7 +27,6 @@ public class BuscaController {
     @Autowired
     private BuscaService service;
 
-
     @Operation(summary = "Rota responsável por acessar o db e retornar o histórico de buscas realizadas")
     @ApiResponses(value = {
             @ApiResponse(
