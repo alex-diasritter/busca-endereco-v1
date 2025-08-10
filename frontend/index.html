@@ -4,50 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busca de CEP</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .container {
-            margin-top: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        button {
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .error {
-            color: red;
-            margin: 10px 0;
-        }
-        .success {
-            color: green;
-            margin: 10px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="login-section">
-        <h2>Login</h2>
-        <div id="login-message" class="error"></div>
+    <div id="login-section" class="container">
+        <h1>Login</h1>
+        <div id="login-message" class="message"></div>
         <form id="login-form">
             <div class="form-group">
                 <label for="username">Usuário:</label>
@@ -57,9 +19,9 @@
                 <label for="password">Senha:</label>
                 <input type="password" id="password" required autocomplete="current-password">
             </div>
-            <button type="submit">Entrar</button>
-            <div style="margin-top: 10px;">
-                <a href="register.html">Criar nova conta</a>
+            <div class="form-actions">
+                <button type="submit">Entrar</button>
+                <a href="register.html" class="btn secondary" style="margin-left: 10px;">Criar nova conta</a>
             </div>
         </form>
         
@@ -83,14 +45,17 @@
         </div>
     </div>
 
-    <div id="app" style="display: none;">
-        <div style="float: right;">
-            <button id="logout-btn">Sair</button>
+    <div id="app" class="hidden">
+        <div class="text-right">
+            <button id="logout-btn" class="btn secondary">Sair</button>
         </div>
         <h2>Buscar Endereço</h2>
         <div class="form-group">
-            <input type="text" id="cep-input" placeholder="Digite o CEP (apenas números)" maxlength="8">
-            <button id="search-btn">Buscar</button>
+            <label for="cep-input">Buscar CEP:</label>
+            <div style="display: flex; gap: 10px; margin-top: 5px;">
+                <input type="text" id="cep-input" placeholder="Digite o CEP (apenas números)" maxlength="8" style="flex: 1;">
+                <button id="search-btn" type="button">Buscar</button>
+            </div>
         </div>
         <div id="search-result"></div>
         
