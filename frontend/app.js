@@ -5,6 +5,10 @@ const loginSection = document.getElementById('login-section');
 const appSection = document.getElementById('app');
 const loginForm = document.getElementById('login-form');
 const loginMessage = document.getElementById('login-message');
+const registerSection = document.getElementById('register-section');
+const registerForm = document.getElementById('register-form');
+const registerMessage = document.getElementById('register-message');
+const showRegisterLink = document.getElementById('show-register');
 const logoutBtn = document.getElementById('logout-btn');
 const searchBtn = document.getElementById('search-btn');
 const cepInput = document.getElementById('cep-input');
@@ -64,6 +68,29 @@ if (logoutBtn) {
 // Search CEP
 if (searchBtn) {
     searchBtn.addEventListener('click', searchAddress);
+}
+
+// Funções globais para navegação
+window.showRegister = function() {
+    if (loginSection) loginSection.style.display = 'none';
+    if (registerSection) registerSection.style.display = 'block';
+};
+
+window.backToLogin = function() {
+    if (registerSection) registerSection.style.display = 'none';
+    if (loginSection) loginSection.style.display = 'block';
+    clearRegisterForm();
+    return false;
+};
+
+// Toggle between login and register forms
+if (showRegisterLink) {
+    showRegisterLink.onclick = showRegister;
+}
+
+// Handle register form submission
+if (registerForm) {
+    registerForm.addEventListener('submit', handleRegister);
 }
 
 // Allow pressing Enter in CEP input
@@ -199,10 +226,78 @@ function showApp() {
     appSection.style.display = 'block';
 }
 
+async function handleRegister(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('reg-username').value.trim();
+    const password = document.getElementById('reg-password').value;
+
+    
+    if (password.length < 4) {
+        showRegisterMessage('A senha deve ter pelo menos 4 caracteres', 'error');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${API_URL}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username.trim(),
+                password: password,
+                role: 'USER' // Default role, must match UserRole enum in backend
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            const errorMessage = data.message || 'Erro ao cadastrar usuário';
+            throw new Error(errorMessage);
+        }
+        
+        showRegisterMessage('Usuário cadastrado com sucesso! Faça login para continuar.', 'success');
+        
+        // Clear form and switch to login after 2 seconds
+        setTimeout(() => {
+            clearRegisterForm();
+            registerSection.style.display = 'none';
+            loginSection.style.display = 'block';
+            showRegisterMessage('', '');
+        }, 2000);
+        
+    } catch (err) {
+        console.error('Registration error:', err);
+        showRegisterMessage(err.message || 'Erro ao cadastrar usuário', 'error');
+    }
+}
+
+function showRegisterMessage(message, type = 'error') {
+    if (!registerMessage) return;
+    
+    registerMessage.textContent = message;
+    registerMessage.className = type;
+    
+    if (type === 'success') {
+        registerMessage.style.color = 'green';
+    } else {
+        registerMessage.style.color = 'red';
+    }
+}
+
+function clearRegisterForm() {
+    if (registerForm) registerForm.reset();
+    if (registerMessage) registerMessage.textContent = '';
+}
+
 function showLogin() {
     loginSection.style.display = 'block';
+    registerSection.style.display = 'none';
     appSection.style.display = 'none';
     document.getElementById('username').value = '';
     document.getElementById('password').value = '';
-    loginMessage.textContent = '';
+    if (loginMessage) loginMessage.textContent = '';
 }

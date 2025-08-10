@@ -51,14 +51,36 @@
         <form id="login-form">
             <div class="form-group">
                 <label for="username">Usuário:</label>
-                <input type="text" id="username" required>
+                <input type="text" id="username" required autocomplete="username">
             </div>
             <div class="form-group">
-                <label for="password">Senha:   </label>
-                <input type="password" id="password" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required autocomplete="current-password">
             </div>
             <button type="submit">Entrar</button>
+            <div style="margin-top: 10px;">
+                <a href="register.html">Criar nova conta</a>
+            </div>
         </form>
+        
+        <div id="register-section" style="display: none;">
+            <h2>Cadastrar Novo Usuário</h2>
+            <div id="register-message" class="error"></div>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-username">Usuário:</label>
+                    <input type="text" id="reg-username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Senha:::</label>
+                    <input type="password" id="reg-password" required autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Cadastrar</button>
+                    <button type="button" onclick="return backToLogin();" style="margin-left: 10px;">Voltar</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div id="app" style="display: none;">
