@@ -1,21 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <title>Login - BuscaCEP</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de CEP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+            margin: 10px 0;
+        }
+        .success {
+            color: green;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>Login</h1>
-    <form id="login-form">
-        <input type="text" id="username" placeholder="Usuário" required />
-        <input type="password" id="password" placeholder="Senha" required />
-        <button type="submit">Entrar</button>
-    </form>
-    <div id="loginMsg" class="resultado"></div>
-</div>
+    <div id="login-section">
+        <h2>Login</h2>
+        <div id="login-message" class="error"></div>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:   </label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
 
-<script src="script.js"></script>
+    <div id="app" style="display: none;">
+        <div style="float: right;">
+            <button id="logout-btn">Sair</button>
+        </div>
+        <h2>Buscar Endereço</h2>
+        <div class="form-group">
+            <input type="text" id="cep-input" placeholder="Digite o CEP (apenas números)" maxlength="8">
+            <button id="search-btn">Buscar</button>
+        </div>
+        <div id="search-result"></div>
+        
+        <h3>Endereços Buscados</h3>
+        <div id="addresses-container">
+            <table id="addresses-table">
+                <thead>
+                    <tr>
+                        <th>CEP</th>
+                        <th>Logradouro</th>
+                        <th>Bairro</th>
+                        <th>Cidade/UF</th>
+                    </tr>
+                </thead>
+                <tbody id="addresses-body">
+                    <!-- Endereços serão inseridos aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
