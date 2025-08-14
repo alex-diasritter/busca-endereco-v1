@@ -1,13 +1,9 @@
 package com.alex.buscacep.infra.security;
-
-// Imports que estavam faltando
 import org.springframework.security.config.Customizer;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
-
-// Imports que você já tinha
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,16 +46,12 @@ public class SecurityConfigurations {
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
-                        // Endpoints do H2 Console
                         .requestMatchers("/h2-console/**").permitAll()
-                        // Permissões de ADMIN
                         .requestMatchers(HttpMethod.DELETE, "/buscacep/{cep}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/auth/{username}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/auth/users").hasRole("ADMIN")
-                        // Permissões de USER
                         .requestMatchers(HttpMethod.GET, "/buscas").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/buscacep", "/buscacep/{cep}").hasRole("USER")
-                        // Todas as outras requisições precisam de autenticação
+                        .requestMatchers(HttpMethod.GET, "/buscacep", "/buscacep/{cep}").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
@@ -69,15 +61,11 @@ public class SecurityConfigurations {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        // Permite requisições da origem do seu frontend
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-        // Permite os métodos HTTP que seu frontend usará
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        // Permite todos os cabeçalhos
         configuration.setAllowedHeaders(Arrays.asList("*"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        // Aplica esta configuração a todos os endpoints da sua API
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
